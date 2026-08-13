@@ -1,0 +1,116 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+.header{
+    width: 100%;
+    height: 65px;
+    background-color: #1800ad;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Logo{
+    margin-left: 20px;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-left: 120px;
+}
+
+.nav{
+    text-decoration: none;
+    color: white;
+}
+
+.acesso{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.btn-header{
+    border: none;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    width: 100px;
+    height: 25px;
+    
+}
+
+#bannerIndex{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/imgs/bannerIndex.svg');
+    width: 100%;
+    height: 550px;
+    background-size: cover;
+    background-image: center;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: space-evenly;
+}
+
+#tituloBanner{
+    color: white;
+    font-size:60px;
+}
+
+#slogan{
+    color: white;
+    font-size: 40px;
+    width: 250px;
+}
+
+
+/* LOGIN */
+
+#divLogin{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#boxLogin{
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+    background-color: #1800ad;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.titulo-login-cadastro{
+    color: white;
+    font-size: 35px;
+}
+
+.ipt-login-cadastro{
+    width: 250px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+}
+
+#btn-login{
+    width: 100px;
+    height: 20px;
+    border: none;
+    border-radius: 20px;
+}
