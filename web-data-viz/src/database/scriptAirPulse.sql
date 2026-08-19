@@ -1,3 +1,6 @@
+CREATE DATABASE airpulse;
+USE airpulse;
+
 CREATE TABLE empresa(
 	id INT PRIMARY KEY AUTO_INCREMENT, 
 	razaoSocial VARCHAR(100),
@@ -26,7 +29,7 @@ CREATE TABLE funcionario(
 	nome VARCHAR(60),
 	dtNascimento DATE,
 	emailCorporativo VARCHAR(50),
-	telefone VARCHAR()
+	telefone VARCHAR(20),
 	cpf CHAR(11),
 	cargo VARCHAR(30),
 	adm TINYINT,
@@ -35,17 +38,13 @@ CREATE TABLE funcionario(
 	fkEmpresa INT,
 	CONSTRAINT ctFkEmpresa
 	FOREIGN KEY (fkEmpresa)
-	REFERENCES empresa(id),
-	fkPermissao INT,
-	CONSTRAINT ctFkPermissao
-	FOREIGN KEY (fkPermissao)
-	REFERENCES permissao(id)
+	REFERENCES empresa(id)
 );
 
 CREATE TABLE aviao(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	prefixo VARCHAR(50),
-	companhia VARCHAR(60),
+	companhia VARCHAR(60)
 );
 
 -- CREATE TABLE componentes(
@@ -82,8 +81,3 @@ CREATE TABLE aviao(
 -- 	FOREIGN KEY (fkComponente)
 -- 	REFERENCES 
 -- );
-
-INSERT INTO permissao (permissao, especificacao) VALUES
-("Acesso total", "Cadastros, permissões, relatórios, configurações"),
-("Acesso operacional", "Sem gerenciamento de usuários"),
-("Visualização e acompanhamento", "Visualização da dashboard e acompanhamento de alertas"),
