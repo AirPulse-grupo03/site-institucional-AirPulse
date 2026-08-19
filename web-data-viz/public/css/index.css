@@ -124,6 +124,10 @@
 }
 
 
+html {
+    scroll-behavior: smooth;
+}
+
 .secao-sobre-nos {
     background-color: #ffffff;
     padding: 80px 120px;
@@ -212,6 +216,12 @@
     border: 1px solid #e8eaff;
     border-radius: 12px;
     padding: 28px 24px;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.cartao-pilar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(45, 69, 245, 0.1);
 }
 
 .icone-pilar {
@@ -280,6 +290,11 @@
     border: 1px solid #e8eaff;
     border-radius: 12px;
     padding: 32px;
+    transition: box-shadow 0.25s;
+}
+
+.cartao-historia:hover {
+    box-shadow: 0 8px 24px rgba(45, 69, 245, 0.08);
 }
 
 .titulo-cartao-historia {
@@ -328,6 +343,11 @@
     flex: 1;
     border-radius: 12px;
     overflow: hidden;
+    transition: box-shadow 0.25s;
+}
+
+.imagem-historia:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 .foto-historia {
@@ -373,6 +393,18 @@
     border: 1px solid #e8eaff;
     border-radius: 12px;
     padding: 28px 24px;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.cartao-diferencial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(45, 69, 245, 0.1);
+}
+
+.cartao-diferencial:hover .icone-diferencial {
+    background-color: #2d45f5;
+    color: #ffffff;
+    transition: background-color 0.25s, color 0.25s;
 }
 
 .icone-diferencial {
@@ -415,6 +447,7 @@
     text-align: center;
     width: 100%;
     max-width: 860px;
+    box-shadow: 0 20px 60px rgba(26, 31, 142, 0.35);
 }
 
 .titulo-cta {
@@ -450,6 +483,7 @@
     border: 2px solid #ffffff;
     border-radius: 8px;
     padding: 12px 28px;
+    cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
 }
 
@@ -466,6 +500,7 @@
     background-color: #2d45f5;
     border-radius: 8px;
     padding: 12px 28px;
+    cursor: pointer;
     transition: background-color 0.2s;
 }
 
