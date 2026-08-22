@@ -10,7 +10,7 @@
 .header {
     width: 100%;
     height: 65px;
-    background-color: #ffffff;
+    background-color: #DCF6FF;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -82,12 +82,20 @@
 
 }
 
+
 #bannerIndex {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/imgs/bannerIndex.svg');
+    background-image: 
+        linear-gradient(
+            to right, 
+            #ffffff 0%, 
+            #ffffff 35%, 
+            rgba(255, 255, 255, 0) 65%), 
+        url('../assets/imgs/aviao-banner.jpg'); 
     width: 100%;
     height: 550px;
     background-size: cover;
-    background-image: center;
+    background-position: center right; 
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -95,14 +103,22 @@
 }
 
 #tituloBanner {
-    color: white;
+    color: #361ed2;
     font-size: 60px;
+     margin-left: 5%;
+     font-size: 36px;
+    font-weight: 800;
 }
 
 #slogan {
-    color: white;
-    font-size: 40px;
-    width: 250px;
+     font-size: 50px;
+    font-weight: 800;
+    color: #0d1240;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 450px;
+    margin-left: 5%;
+    margin-right: auto;
 }
 
 
@@ -161,6 +177,13 @@
     font-size: 13px;
     font-weight: 700;
 }
+
+.cadastro-pelo-banner{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
 
 .texto-ipt {
     color: white;
@@ -229,6 +252,10 @@ html {
 
 .destaque-azul {
     color: #2d45f5;
+}
+
+.destaque-banner {
+   color: #361ed2;
 }
 
 .descricao-sobre-nos {
@@ -332,7 +359,13 @@ html {
 }
 
 
-
+.subtituloBanner{
+     font-size: 15px;
+    color: #6b7280;
+    line-height: 1.65;
+     max-width: 400px;
+    margin-left: 5%;
+}
 
 .secao-historia {
     background-color: #ffffff;
