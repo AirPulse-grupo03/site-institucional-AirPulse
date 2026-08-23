@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/global.css">
     <link rel="icon" href="assets/icon/logo-airpulse.png">
     <title>AirPulse</title>
 </head>
@@ -29,8 +30,8 @@
         </div>
 
         <div class="acesso">
-            <button class="btn-header" id="btn-login">Entrar</button>
-            <button class="btn-header" id="btn-cadastro">Cadastrar empresa</button>
+            <button class="btn-cadastro">Login</button>
+            <button class="btn-cadastro">Entrar em contato</button>
         </div>
     </div>
 
@@ -38,19 +39,19 @@
         <div id="tituloBanner">AirPulse</div>
         <div id="slogan">O impulso que eleva
             o controle da sua <span class="destaque-banner">operação ao topo</span></div>
-        <div class=" subtituloBanner">Monitoramento inteligente
+        <div class="subtituloBanner">Monitoramento inteligente
             dos recursos computacionais e componentes eletrônicos
             do Flight Management Computer, identificando anomalias,
             antecipando falhas e garantindo decisões mais seguras.</div>
 
         <div class="cadastro-pelo-banner">
-            <button class="btn-header" id="btn-cadastro">Comece agora -></button>
+            <button class="btn-cadastro" >Comece agora -></button>
             
         </div>
     </div>
 
     <!--Beneficios-->
-    <div class="grade-pilares">
+    <div class="grade-pilares-beneficios">
         <div class="posicao-grade-beneficios">
             <div class=" icone-pilar-beneficios">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -132,11 +133,11 @@
             <span class="linha-rotulo"></span>
         </div>
 
-        <div class="cabecalho-nosso-servico">
-            <h2 class="titulo-sobre-nos">
+        <div class="cabecalhos-principais">
+            <h2 class="titulos-principais">
                 Monitoramento que <span class="destaque-azul">protege</span> o que é crítico
             </h2>
-            <p class="descricao-sobre-nos">
+            <p class="descricao-principal">
                 A AirPulse coleta, processa e apresenta métricas dos computadores
                 de gerenciamento de voo em tempo real.
             </p>
@@ -147,11 +148,14 @@
 
                 <div class="cartao-pilar">
                     <div class="icone-pilar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu-icon lucide-cpu">
+                          <path d="M12 20v2"/><path d="M12 2v2"/><path d="M17 20v2"/>
+                          <path d="M17 2v2"/><path d="M2 12h2"/><path d="M2 17h2"/><path d="M2 7h2"/>
+                          <path d="M20 12h2"/><path d="M20 17h2"/><path d="M20 7h2"/><path d="M7 20v2"/>
+                          <path d="M7 2v2"/><rect x="4" y="4" width="16" height="16" rx="2"/>
+                            <rect x="8" y="8" width="8" height="8" rx="1"/>
                         </svg>
                     </div>
                     <h4 class="nome-pilar">CPU Em tempo real</h4>
@@ -163,11 +167,13 @@
 
                 <div class="cartao-pilar">
                     <div class="icone-pilar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-memory-stick-icon lucide-memory-stick">
+                          <path d="M12 12v-2"/><path d="M12 18v-2"/><path d="M16 12v-2"/><path d="M16 18v-2"/>
+                          <path d="M2 11h1.5"/><path d="M20 18v-2"/><path d="M20.5 11H22"/><path d="M4 18v-2"/>
+                          <path d="M8 12v-2"/>
+                            <path d="M8 18v-2"/><rect x="2" y="6" width="20" height="10" rx="2"/>
                         </svg>
                     </div>
                     <h4 class="nome-pilar">Memória RAM</h4>
@@ -179,11 +185,13 @@
 
                 <div class="cartao-pilar">
                     <div class="icone-pilar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-hard-drive-icon lucide-hard-drive">
+                          <path d="M10 16h.01"/><path d="M2.212 11.577a2 2 0 0 0-.212.896V18a2 2 0 0 0 2
+                           2h16a2 2 0 0 0 2-2v-5.527a2 2 0 0 0-.212-.896L18.55 5.11A2 2 0 0 0 16.76 4H7.24a2
+                            2 0 0 0-1.79 1.11z"/>
+                            <path d="M21.946 12.013H2.054"/><path d="M6 16h.01"/>
                         </svg>
                     </div>
                     <h4 class="nome-pilar">Armazenamento</h4>
@@ -196,11 +204,12 @@
             <div class="grade-pilares">
                 <div class="cartao-pilar">
                     <div class="icone-pilar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-siren-icon lucide-siren">
+                          <path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/><path d="M21 12h1"/>
+                          <path d="M18.5 4.5 18 5"/><path d="M2 12h1"/>
+                            <path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/>
                         </svg>
                     </div>
                     <h4 class="nome-pilar">Alertas proativos</h4>
@@ -212,11 +221,12 @@
 
                 <div class="cartao-pilar">
                     <div class="icone-pilar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard">
+                          <rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/>
+                          <rect width="7" height="9" x="14" y="12" rx="1"/>
+                            <rect width="7" height="5" x="3" y="16" rx="1"/>
                         </svg>
                     </div>
                     <h4 class="nome-pilar">Dashboard unificada</h4>
@@ -228,17 +238,17 @@
 
                 <div class="cartao-pilar">
                     <div class="icone-pilar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" class="lucide lucide-triangle-alert-icon lucide-triangle-alert">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0
+                             0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+                            </svg>
                     </div>
-                    <h4 class="nome-pilar">Relatórios e histórico</h4>
+                    <h4 class="nome-pilar">Prevenção de erros</h4>
                     <p class="descricao-pilar">
-                        Acesse o histórico completo de utilização, gere relatórios por
-                         período e exporte dados para análise.
+                        O sistema garante a análise contínua dos dados dos componentes
+                         proporcionando a prevenção de erro..
                     </p>
                 </div>
 </div>
@@ -247,15 +257,15 @@
 
     </section>
 
-    <section class="secao-sobre-nos">
+    <section class="secoes-principais">
 
         <div class="rotulo-secao">
             <span class="linha-rotulo"></span>
             <span class="texto-rotulo">COMO FUNCIONA</span>
             <span class="linha-rotulo"></span>
         </div>
-        <div class="cabecalho-sobre-nos">
-            <h2 class="titulo-sobre-nos">
+        <div class="cabecalhos-principais">
+            <h2 class="titulos-principais">
                 Entenda o <span class="destaque-azul">Fluxo</span> do nosso serviço
                 através do nosso diagrama de visão de negócio.
             </h2>
@@ -268,7 +278,7 @@
     </section>
 
     <!--Sobre nós-->
-    <section class="secao-sobre-nos" id="sobre-nos">
+    <section class="secoes-principais" id="sobre-nos">
 
         <div class="rotulo-secao">
             <span class="linha-rotulo"></span>
@@ -276,12 +286,12 @@
             <span class="linha-rotulo"></span>
         </div>
 
-        <div class="cabecalho-sobre-nos">
-            <h2 class="titulo-sobre-nos">
+        <div class="cabecalhos-principais">
+            <h2 class="titulos-principais">
                 Conheça a <span class="destaque-azul">AirPulse</span> - monitoramento
                 proativo para operações confiáveis.
             </h2>
-            <p class="descricao-sobre-nos">
+            <p class="descricao-principal">
                 Uma plataforma institucional que transforma dados em prevenção, reduzindo incidentes e
                 aumentando a eficiência operacional.
             </p>
@@ -353,8 +363,8 @@
 
     <section class="secao-historia" id="nossa-historia">
 
-        <div class="cabecalho-historia">
-            <h2 class="titulo-historia">Nossa história</h2>
+        <div class="cabecalhos-secundarios">
+            <h2 class="titulos-secundarios">Nossa história</h2>
             <p class="subtitulo-historia">De uma dor real em operações para uma plataforma escalável e confiável.</p>
         </div>
 
@@ -400,10 +410,11 @@
 
     </section>
 
+    <!--Diferenciais-->
     <section class="secao-diferenciais" id="diferenciais">
 
-        <div class="cabecalho-diferenciais">
-            <h2 class="titulo-diferenciais">Diferenciais</h2>
+        <div class="cabecalhos-secundarios">
+            <h2 class="titulos-secundarios">Diferenciais</h2>
             <p class="subtitulo-diferenciais">O que torna a AirPulse diferente no mercado de monitoramento.</p>
         </div>
 
@@ -454,6 +465,7 @@
 
     </section>
 
+    <!--contato-->
 
     <section class="secao-cta">
 
@@ -519,7 +531,5 @@
         </div>
 
     </footer>
-
 </body>
-
 </html>
