@@ -48,6 +48,7 @@ body {
   justify-content: space-between;
   list-style: none;
   color: #e3b062;
+  
 }
 
 .titulo {
@@ -314,7 +315,7 @@ input {
   height: var(--tamanho-simulador);
 }
 
-/* ALERTA */
+
 
 #alerta {
   position: absolute;
