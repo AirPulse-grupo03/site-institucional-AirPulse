@@ -1,51 +1,63 @@
 /* 
-   1. VARIÁVEIS GLOBAIS DE ESTILO (design tokens)
-   Cores, sombra e tokens reutilizados em toda a página.
-   Alterar aqui reflete em todo o layout.
+   1. VARIÁVEIS GLOBAIS DE ESTILO
     */
 :root {
-  --cor-primaria: #2100c7;         /* cor principal da AirPulse */
-  --cor-primaria-escura: #16008d;  /* cor principal em hover/estado ativo */
-  --cor-texto: #0b092d;            /* cor do texto padrão */
-  --cor-texto-secundario: #697394; /* cor do texto secundário */
-  --cor-borda: #d8dcf5;            /* cor de bordas e divisores */
-  --fundo-campo: #f8f9ff;          /* fundo padrão dos campos */
-  --fundo-superficie: #ffffff;     /* fundo dos cartões/superfícies */
-  --fundo-pagina: #f7f8ff;         /* fundo geral da página */
-  --azul-suave: #ddf7ff;           /* fundo de botões secundários */
-  --cor-erro: #c52233;             /* cor de erro/validação */
-  --cor-sucesso: #087a55;          /* cor de sucesso */
-  --sombra-padrao: 0 18px 50px rgba(31, 23, 103, 0.08); /* sombra padrão dos cartões */
+  --cor-primaria: #2100c7;
+  --cor-primaria-escura: #16008d;
+  --cor-texto: #0b092d;
+  --cor-texto-secundario: #697394;
+  --cor-borda: #d8dcf5;
+  --fundo-campo: #f8f9ff;
+  --fundo-superficie: #ffffff;
+  --fundo-pagina: #f7f8ff;
+  --azul-suave: #ddf7ff;
+  --cor-erro: #c52233;
+  --cor-sucesso: #087a55;
+  --sombra-padrao: 0 18px 50px rgba(31, 23, 103, 0.08);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;
+}
 
 body {
   margin: 0;
-  min-height: 100vh;
+  /* dvh desconta a barra de tarefas/navegador, diferente do vh */
+  height: 100dvh;
   color: var(--cor-texto);
   background: var(--fundo-pagina);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
+  overflow: hidden;
 }
 
-button, input, select { font: inherit; }
+button,
+input,
+select {
+  font: inherit;
+}
 
-button, a { -webkit-tap-highlight-color: transparent; }
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* ==========================================================
-   2. CABEÇALHO (TOPBAR)
-   Barra fixa no topo com a marca AirPulse e link de login.
+   2. CABEÇALHO E LOGO
    ========================================================== */
 .topbar {
-  height: 64px;
+  min-height: 88px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 0 28px;
+  padding: 8px clamp(24px, 4vw, 72px);
   background: var(--fundo-superficie);
   border-bottom: 1px solid #e6e8f7;
 }
@@ -53,38 +65,26 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   color: var(--cor-primaria-escura);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   text-decoration: none;
 }
 
-/* Container circular do logo (mantém o tamanho fixo do símbolo) */
-.brand-mark {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 50%;
-  background: var(--cor-primaria);
-  color: white;
-  flex-shrink: 0; /* impede que o logo seja espremido ou estufado pelo flex */
-}
-
-/* Qualquer imagem/svg dentro do logo é ajustada ao tamanho do círculo,
-   evitando que o arquivo de imagem "estoure" o layout */
-.brand-mark svg,
-.brand-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* A logo agora fica inteira e horizontal, sem recorte circular. */
+.brand-logo {
+  width: 96px;
+  height: 60px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  flex-shrink: 0;
 }
 
 .login-copy {
   color: var(--cor-texto-secundario);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .login-copy a {
@@ -94,56 +94,80 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 /* ==========================================================
-   3. ÁREA PRINCIPAL E CABEÇALHO DA PÁGINA
+   3. ÁREA PRINCIPAL
    ========================================================== */
 main {
-  width: min(100% - 32px, 850px);
+  width: max(60vw, 1200px);
+  /* Altura controlada para caber junto com a topbar sem gerar scroll.
+     Usa dvh para descontar corretamente a barra de tarefas/navegador
+     (o mesmo motivo do ajuste feito no body). */
+  height: calc(100vh - 88px);
+  height: calc(100dvh - 88px);
   margin: 0 auto;
-  padding: 44px 0 60px;
+  padding: 48px 0 72px;
+  overflow: hidden; /* garante que o conteúdo interno não role a página */
+  /* Organiza o conteúdo em coluna e garante que os botões (.actions)
+     fiquem sempre visíveis dentro da área disponível, encolhendo o
+     restante do conteúdo se for preciso, em vez de estourar para fora. */
+  display: flex;
+  flex-direction: column;
+}
+
+/* O cartão da etapa atual ocupa o espaço restante e permite rolagem
+   PRÓPRIA se o conteúdo for maior que o espaço disponível — assim o
+   botão "Próximo passo" nunca fica atrás da barra de tarefas. */
+.card {
+  overflow-y: auto;
+}
+
+/* Os botões de ação nunca encolhem e ficam sempre reservados na tela. */
+.actions {
+  flex-shrink: 0;
 }
 
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 12px;
   justify-content: center;
+  gap: 18px;
   color: var(--cor-primaria);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.eyebrow::before, .eyebrow::after {
-  width: min(32vw, 330px);
+.eyebrow::before,
+.eyebrow::after {
+  width: min(34vw, 500px);
   height: 2px;
   content: "";
   background: var(--cor-primaria);
 }
 
 h1 {
-  margin: 14px 0 6px;
+  margin: 16px 0 8px;
   text-align: center;
-  font-size: clamp(27px, 4vw, 34px);
+  font-size: clamp(30px, 4vw, 46px);
   line-height: 1.15;
-  letter-spacing: -.03em;
+  letter-spacing: -0.03em;
 }
 
 .subtitle {
   margin: 0;
   color: var(--cor-texto-secundario);
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 /* 
-   4. INDICADOR DE PROGRESSO (STEPPER)
-   Mostra visualmente em qual das 4 etapas o usuário está.
+   4. INDICADOR DE PROGRESSO
     */
 .progress {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 46px 0 32px;
+  width: min(100%, 1100px);
+  margin: 52px auto 36px;
   padding: 0;
   list-style: none;
 }
@@ -153,17 +177,16 @@ h1 {
   min-width: 0;
   color: #99a2c3;
   text-align: center;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
-/* Linha conectora entre os círculos de etapas */
 .progress li:not(:last-child)::after {
   position: absolute;
   z-index: 0;
-  top: 18px;
-  left: calc(50% + 25px);
-  width: calc(100% - 50px);
+  top: 21px;
+  left: calc(50% + 30px);
+  width: calc(100% - 60px);
   height: 2px;
   content: "";
   background: var(--cor-borda);
@@ -173,19 +196,21 @@ h1 {
   position: relative;
   z-index: 1;
   display: grid;
-  width: 38px;
-  height: 38px;
-  margin: 0 auto 8px;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
   place-items: center;
   border: 2px solid var(--cor-borda);
   border-radius: 50%;
   background: var(--fundo-pagina);
   color: #9aa4c7;
-  font-size: 14px;
+  font-size: 15px;
 }
 
-/* Estado "etapa atual" e "etapa concluída" */
-.progress li.active, .progress li.done { color: var(--cor-primaria); }
+.progress li.active,
+.progress li.done {
+  color: var(--cor-primaria);
+}
 
 .progress li.active .circle,
 .progress li.done .circle {
@@ -194,44 +219,50 @@ h1 {
   color: white;
 }
 
-.progress li.done:not(:last-child)::after { background: var(--cor-primaria); }
+.progress li.done:not(:last-child)::after {
+  background: var(--cor-primaria);
+}
 
-/* 
-   5. CARTÃO (CONTAINER DE CADA ETAPA DO FORMULÁRIO)
-    */
+/* ==========================================================
+   5. CARTÃO DO FORMULÁRIO
+   ========================================================== */
 .card {
-  padding: 38px;
+  width: 100%;
+  min-height: 440px;
+  padding: clamp(34px, 4vw, 64px);
   border: 1px solid var(--cor-borda);
-  border-radius: 18px;
+  border-radius: 20px;
   background: var(--fundo-superficie);
   box-shadow: var(--sombra-padrao);
 }
 
-/* Oculta etapas que não estão ativas no momento */
-.step[hidden] { display: none; }
-
-h2 {
-  margin: 0 0 28px;
-  font-size: 20px;
-  letter-spacing: -.02em;
+.step[hidden] {
+  display: none;
 }
 
-/* 
-   6. GRID DE CAMPOS DO FORMULÁRIO
-    */
+h2 {
+  margin: 0 0 34px;
+  font-size: clamp(23px, 2vw, 29px);
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================
+   6. CAMPOS DO FORMULÁRIO
+   ========================================================== */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 26px 32px;
 }
 
-/* Campo que ocupa as duas colunas do grid */
-.field.full { grid-column: 1 / -1; }
+.field.full {
+  grid-column: 1 / -1;
+}
 
 label {
   display: inline-block;
-  margin-bottom: 8px;
-  font-size: 13px;
+  margin-bottom: 10px;
+  font-size: 15px;
   font-weight: 750;
 }
 
@@ -240,90 +271,104 @@ label {
   font-weight: 500;
 }
 
-input, select {
+input,
+select {
   width: 100%;
-  min-height: 50px;
-  padding: 0 16px;
+  min-height: 62px;
+  padding: 0 20px;
   border: 1px solid #cfd4f4;
-  border-radius: 11px;
+  border-radius: 13px;
   outline: none;
   background: var(--fundo-campo);
   color: var(--cor-texto);
-  transition: border-color .2s, box-shadow .2s, background .2s;
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-input::placeholder { color: #79819c; }
+input::placeholder {
+  color: #79819c;
+}
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   border-color: var(--cor-primaria);
   background: white;
-  box-shadow: 0 0 0 3px rgba(33, 0, 199, .12);
+  box-shadow: 0 0 0 4px rgba(33, 0, 199, 0.12);
 }
 
-/* Estado de campo inválido (após validação) */
-input.invalid, select.invalid { border-color: var(--cor-erro); }
+input.invalid,
+select.invalid {
+  border-color: var(--cor-erro);
+}
 
 .error {
-  min-height: 17px;
-  margin: 5px 0 -2px;
+  min-height: 18px;
+  margin: 6px 0 -2px;
   color: var(--cor-erro);
-  font-size: 12px;
+  font-size: 13px;
 }
 
-/* Campo de senha com botão "mostrar/ocultar" */
-.password-wrap { position: relative; }
+.password-wrap {
+  position: relative;
+}
 
-.password-wrap input { padding-right: 62px; }
+.password-wrap input {
+  padding-right: 76px;
+}
 
 .show-password {
   position: absolute;
   top: 50%;
-  right: 13px;
+  right: 16px;
   padding: 6px;
   border: 0;
   background: transparent;
   color: var(--cor-primaria);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   transform: translateY(-50%);
 }
 
 .helper {
-  margin: 6px 0 0;
+  margin: 7px 0 0;
   color: var(--cor-texto-secundario);
-  font-size: 12px;
+  font-size: 13px;
 }
 
-/* 
-   7. BOTÕES DE AÇÃO (AVANÇAR / VOLTAR)
-    */
+/* ==========================================================
+   7. BOTÕES
+   ========================================================== */
 .actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-top: 30px;
+  gap: 18px;
+  margin-top: 32px;
 }
 
 .button {
   display: inline-flex;
-  min-height: 50px;
+  min-width: 170px;
+  min-height: 58px;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 0 26px;
+  gap: 7px;
+  padding: 0 30px;
   border: 1px solid transparent;
-  border-radius: 11px;
+  border-radius: 12px;
   cursor: pointer;
+  font-size: 15px;
   font-weight: 750;
-  transition: transform .15s, background .2s, box-shadow .2s;
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
 }
 
-.button:hover { transform: translateY(-1px); }
+.button:hover {
+  transform: translateY(-1px);
+}
 
 .button:focus-visible {
-  outline: 3px solid rgba(33, 0, 199, .24);
+  outline: 3px solid rgba(33, 0, 199, 0.24);
   outline-offset: 3px;
 }
 
@@ -331,10 +376,12 @@ input.invalid, select.invalid { border-color: var(--cor-erro); }
   margin-left: auto;
   background: var(--cor-primaria);
   color: white;
-  box-shadow: 0 10px 24px rgba(33, 0, 199, .18);
+  box-shadow: 0 10px 24px rgba(33, 0, 199, 0.18);
 }
 
-.button-primary:hover { background: var(--cor-primaria-escura); }
+.button-primary:hover {
+  background: var(--cor-primaria-escura);
+}
 
 .button-secondary {
   border-color: #a9d9f0;
@@ -342,67 +389,69 @@ input.invalid, select.invalid { border-color: var(--cor-erro); }
   color: var(--cor-primaria);
 }
 
-/* 
-   8. ETAPA 4 — TELA DE REVISÃO/CONFIRMAÇÃO
-   Exibe um resumo de tudo o que foi preenchido, agrupado
-   por seção, com botão "Alterar" para voltar à etapa.
-    */
+/* ==========================================================
+   8. REVISÃO DOS DADOS
+   ========================================================== */
 .review-title {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   text-align: center;
-  font-size: 27px;
+  font-size: clamp(26px, 3vw, 36px);
 }
 
 .review-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 22px;
 }
 
 .review-section {
   position: relative;
-  padding: 22px;
+  padding: 26px;
   border: 1px solid #e0e3f4;
-  border-radius: 14px;
+  border-radius: 15px;
   background: #fbfbff;
 }
 
-.review-section.full { grid-column: 1 / -1; }
+.review-section.full {
+  grid-column: 1 / -1;
+}
 
 .review-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .review-heading h3 {
   margin: 0;
   color: var(--cor-primaria);
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .edit-button {
-  padding: 5px 10px;
+  padding: 7px 12px;
   border: 1px solid #addcf2;
   border-radius: 8px;
   background: var(--azul-suave);
   color: var(--cor-primaria);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 750;
 }
 
 .review-list {
   display: grid;
-  grid-template-columns: 145px 1fr;
-  gap: 9px 12px;
+  grid-template-columns: 165px 1fr;
+  gap: 10px 14px;
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
 }
 
-.review-list dt { color: var(--cor-texto-secundario); }
+.review-list dt {
+  color: var(--cor-texto-secundario);
+}
 
 .review-list dd {
   min-width: 0;
@@ -411,35 +460,36 @@ input.invalid, select.invalid { border-color: var(--cor-erro); }
   font-weight: 650;
 }
 
-/* ==========================================================
-   9. ETAPA 5 — TELA DE SUCS
-   Exibida após o envio final do formulário.
+/* 
+   9. TELA DE SUCESSO
     */
 .success-screen {
-  padding: 26px 10px 14px;
+  padding: 40px 10px 24px;
   text-align: center;
 }
 
 .success-icon {
   display: grid;
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 20px;
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 22px;
   place-items: center;
   border-radius: 50%;
   background: #e4fbf3;
   color: var(--cor-sucesso);
-  font-size: 34px;
+  font-size: 38px;
   font-weight: 800;
 }
 
-.success-screen h2 { margin-bottom: 10px; font-size: 28px; }
-
-.success-screen p {
-  max-width: 540px;
-  margin: 0 auto;
-  color: var(--cor-texto-secundario);
-  line-height: 1.6;
+.success-screen h2 {
+  margin-bottom: 12px;
+  font-size: 32px;
 }
 
-/* 10. RESPONSIVIDADE (TABLETS E CELULARES) DEPOIS
+.success-screen p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--cor-texto-secundario);
+  font-size: 16px;
+  line-height: 1.6;
+}
