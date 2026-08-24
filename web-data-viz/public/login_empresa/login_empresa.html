@@ -1,79 +1,257 @@
 <!DOCTYPE html>
+<!--
+  
+  ARQUIVO: cadastro-empresa.html
+  PROJETO: AirPulse
+  DESCRIÇÃO: Página de cadastro de empresa (fluxo em 4 etapas)
+             1) Dados da empresa
+             2) Endereço
+             3) Responsável pela conta
+             4) Confirmação (revisão) + tela de sucesso
+  OBSERVAÇÃO: CSS e JavaScript foram mantidos dentro deste
+              mesmo arquivo por serem indispensáveis ao
+              funcionamento da página (máscaras de campo,
+              validações e navegação entre etapas).
+  
+-->
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cadastro de empresas na plataforma AirPulse">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../css/global.css">
-    <title>Cadastro de empresa | AirPulse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cadastro de empresas na plataforma AirPulse">
+  <title>Cadastro de empresa | AirPulse</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/global.css">ink
 </head>
-
 <body>
 
-    <!-- Cabeçalho principal da página -->
-    <header class="cabecalho">
+  <!-- ==========================================================
+       CABEÇALHO DA PÁGINA (LOGO + LINK DE LOGIN)
+       ========================================================== -->
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="AirPulse - início">
+        <img src="../assets/icon/AirPulse__2_-removebg-preview.png" alt="logo-airpulse">
+      </span>
+      AirPulse
+    </a>
+    <div class="login-copy"><span>Já tem conta? </span><a href="#">Entrar</a></div>
+  </header>
 
-        <!-- Logo da AirPulse -->
-        <a class="marca" href="#" aria-label="AirPulse - início">
-            <span class="marca-logo">
-                <img src="../assets/icon/logo-airpulse.png" alt="Logo AirPulse">
-            </span>
+  <main>
+    <!-- Título e subtítulo da página -->
+    <div class="eyebrow">Cadastro de empresa</div>
+    <h1>Comece a monitorar sua frota</h1>
+    <p class="subtitle">Preencha as informações da sua empresa para criar sua conta AirPulse.</p>
 
-            AirPulse
-        </a>
+    <!-- 
+         INDICADOR DE PROGRESSO (STEPPER)
+         Atualizado dinamicamente pelo JavaScript conforme o
+         usuário avança/retorna entre as etapas do formulário.
+          -->
+    <ol class="progress" id="progress" aria-label="Progresso do cadastro">
+      <li class="active" data-progress="1"><span class="circle">1</span><span>Dados da empresa</span></li>
+      <li data-progress="2"><span class="circle">2</span><span>Endereço</span></li>
+      <li data-progress="3"><span class="circle">3</span><span>Responsável</span></li>
+      <li data-progress="4"><span class="circle">4</span><span>Confirmação</span></li>
+    </ol>
 
-        <!-- Acesso para quem já possui cadastro -->
-        <div class="acesso-login">
-            <span>Já tem conta?</span>
-            <a href="#">Entrar</a>
+    <form id="company-form" novalidate>
+
+      <!-- 
+           ETAPA 1 — DADOS DA EMPRESA
+            -->
+      <section class="card step" data-step="1" aria-labelledby="step-1-title">
+        <h2 id="step-1-title">Dados da empresa</h2>
+        <div class="grid">
+          <div class="field full">
+            <label for="razao-social">Razão social *</label>
+            <input id="razao-social" name="razao_social" type="text" autocomplete="organization" placeholder="Nome completo da empresa" required>
+            <p class="error" data-error="razao_social"></p>
+          </div>
+          <div class="field">
+            <label for="nome-fantasia">Nome fantasia <span class="optional">(opcional)</span></label>
+            <input id="nome-fantasia" name="nome_fantasia" type="text" placeholder="Nome comercial">
+            <p class="error" data-error="nome_fantasia"></p>
+          </div>
+          <div class="field">
+            <!-- Campo com máscara automática aplicada via JavaScript (formatCnpj) -->
+            <label for="cnpj">CNPJ *</label>
+            <input id="cnpj" name="cnpj" type="text" inputmode="numeric" maxlength="18" placeholder="00.000.000/0001-00" required>
+            <p class="error" data-error="cnpj"></p>
+          </div>
+          <div class="field">
+            <label for="segmento">Segmento de atuação *</label>
+            <select id="segmento" name="segmento" required>
+              <option value="">Selecione o segmento</option>
+              <option>Fabricante de sistemas embarcados</option>
+              <option>Fabricante de aeronaves</option>
+              <option>Manutenção aeronáutica</option>
+              <option>Operador aéreo</option>
+              <option>Outro</option>
+            </select>
+            <p class="error" data-error="segmento"></p>
+          </div>
+          <div class="field">
+            <label for="website">Website <span class="optional">(opcional)</span></label>
+            <input id="website" name="website" type="url" inputmode="url" placeholder="https://empresa.com.br">
+            <p class="error" data-error="website"></p>
+          </div>
+          <div class="field full">
+            <label for="email-empresa">E-mail corporativo da empresa *</label>
+            <input id="email-empresa" name="email_empresa" type="email" autocomplete="email" placeholder="contato@empresa.aero" required>
+            <p class="error" data-error="email_empresa"></p>
+          </div>
         </div>
+      </section>
 
-    </header>
+      <!-- ==========================================================
+           ETAPA 2 — ENDEREÇO
+           ========================================================== -->
+      <section class="card step" data-step="2" aria-labelledby="step-2-title" hidden>
+        <h2 id="step-2-title">Endereço</h2>
+        <div class="grid">
+          <div class="field">
+            <!-- Campo com máscara automática aplicada via JavaScript (formatCep) -->
+            <label for="cep">CEP *</label>
+            <input id="cep" name="cep" type="text" inputmode="numeric" maxlength="9" autocomplete="postal-code" placeholder="00000-000" required>
+            <p class="error" data-error="cep"></p>
+          </div>
+          <div class="field full">
+            <label for="logradouro">Logradouro *</label>
+            <input id="logradouro" name="logradouro" type="text" autocomplete="address-line1" placeholder="Rua, avenida, alameda..." required>
+            <p class="error" data-error="logradouro"></p>
+          </div>
+          <div class="field">
+            <label for="bairro">Bairro *</label>
+            <input id="bairro" name="bairro" type="text" autocomplete="address-level3" placeholder="Bairro" required>
+            <p class="error" data-error="bairro"></p>
+          </div>
+          <div class="field">
+            <label for="numero">Número *</label>
+            <input id="numero" name="numero" type="text" autocomplete="address-line2" placeholder="123 ou S/N" required>
+            <p class="error" data-error="numero"></p>
+          </div>
+          <div class="field">
+            <label for="estado">Estado *</label>
+            <select id="estado" name="estado" autocomplete="address-level1" required>
+              <option value="">Selecione</option>
+              <option value="AC">Acre</option><option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option><option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option><option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option><option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option><option value="PA">Pará</option>
+              <option value="PB">Paraíba</option><option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option><option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option><option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+            <p class="error" data-error="estado"></p>
+          </div>
+          <div class="field">
+            <label for="cidade">Cidade *</label>
+            <input id="cidade" name="cidade" type="text" autocomplete="address-level2" placeholder="São Paulo" required>
+            <p class="error" data-error="cidade"></p>
+          </div>
+        </div>
+      </section>
 
-    <main>
+      <!-- 
+           ETAPA 3 — RESPONSÁVEL PELA CONTA
+            -->
+      <section class="card step" data-step="3" aria-labelledby="step-3-title" hidden>
+        <h2 id="step-3-title">Responsável pela conta</h2>
+        <div class="grid">
+          <div class="field full">
+            <label for="responsavel">Nome completo *</label>
+            <input id="responsavel" name="responsavel" type="text" autocomplete="name" placeholder="Nome e sobrenome" required>
+            <p class="error" data-error="responsavel"></p>
+          </div>
+          <div class="field">
+            <label for="email-responsavel">E-mail corporativo *</label>
+            <input id="email-responsavel" name="email_responsavel" type="email" autocomplete="email" placeholder="nome@empresa.aero" required>
+            <p class="error" data-error="email_responsavel"></p>
+          </div>
+          <div class="field">
+            <!-- Campo com máscara automática aplicada via JavaScript (formatPhone) -->
+            <label for="telefone">Telefone *</label>
+            <input id="telefone" name="telefone" type="tel" inputmode="tel" maxlength="15" autocomplete="tel" placeholder="(11) 90000-0000" required>
+            <p class="error" data-error="telefone"></p>
+          </div>
+          <div class="field">
+            <label for="cargo">Cargo *</label>
+            <select id="cargo" name="cargo" required>
+              <option value="">Selecione o cargo</option>
+              <option>Administrador</option>
+              <option>Gestor de operações</option>
+              <option>Engenheiro de sistemas</option>
+              <option>Analista de monitoramento</option>
+              <option>Outro</option>
+            </select>
+            <p class="error" data-error="cargo"></p>
+          </div>
+          <div class="field">
+            <!-- Campo com máscara automática aplicada via JavaScript (formatCpf) -->
+            <label for="cpf">CPF *</label>
+            <input id="cpf" name="cpf" type="text" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required>
+            <p class="error" data-error="cpf"></p>
+          </div>
+          <div class="field">
+            <!-- Campo de senha com botão para mostrar/ocultar o texto digitado -->
+            <label for="senha">Senha *</label>
+            <div class="password-wrap">
+              <input id="senha" name="senha" type="password" minlength="8" autocomplete="new-password" placeholder="Crie uma senha" required>
+              <button class="show-password" type="button" data-password="senha">Mostrar</button>
+            </div>
+            <p class="helper">Mínimo de 8 caracteres, com letra e número.</p>
+            <p class="error" data-error="senha"></p>
+          </div>
+          <div class="field">
+            <label for="confirmar-senha">Confirmar senha *</label>
+            <div class="password-wrap">
+              <input id="confirmar-senha" name="confirmar_senha" type="password" autocomplete="new-password" placeholder="Repita a senha" required>
+              <button class="show-password" type="button" data-password="confirmar-senha">Mostrar</button>
+            </div>
+            <p class="helper" aria-hidden="true">&nbsp;</p>
+            <p class="error" data-error="confirmar_senha"></p>
+          </div>
+        </div>
+      </section>
 
-        <!-- Apresentação da página -->
-        <div class="tipo-pagina">Cadastro de empresa</div>
+      <!-- 
+           ETAPA 4 — CONFIRMAÇÃO (REVISÃO DOS DADOS)
+           O conteúdo de #review-content é gerado dinamicamente
+           pela função renderReview() no JavaScript, a partir dos
+           valores preenchidos nas etapas 1, 2 e 3.
+            -->
+      <section class="card step" data-step="4" aria-labelledby="step-4-title" hidden>
+        <h2 class="review-title" id="step-4-title">Confirme os dados informados</h2>
+        <div class="review-grid" id="review-content"></div>
+      </section>
 
-        <h1>Comece a monitorar sua frota</h1>
+      <!-- 
+           ETAPA 5 — TELA DE SUCESSO (após finalizar o cadastro)
+            -->
+      <section class="card step" data-step="5" aria-live="polite" hidden>
+        <div class="success-screen">
+          <div class="success-icon">✓</div>
+          <h2>Cadastro concluído!</h2>
+          <p>A empresa foi cadastrada com sucesso. Em uma integração real, os dados seriam enviados com segurança para a API da AirPulse.</p>
+        </div>
+      </section>
 
-        <p class="subtitulo">
-            Preencha as informações da sua empresa para criar sua conta AirPulse.
-        </p>
+      <!-- Botões de navegação entre as etapas (Voltar / Próximo / Finalizar) -->
+      <div class="actions" id="actions">
+        <button class="button button-secondary" id="back-button" type="button" hidden>← Voltar</button>
+        <button class="button button-primary" id="next-button" type="button">Próximo passo →</button>
+      </div>
+    </form>
+  </main>
 
-
-        <!-- Etapas que o usuário precisa concluir durante o cadastro -->
-        <ol class="progresso-cadastro" aria-label="Progresso do cadastro">
-
-            <li class="etapa-ativa">
-                <span class="numero-etapa">1</span>
-                <span>Dados da empresa</span>
-            </li>
-
-            <li>
-                <span class="numero-etapa">2</span>
-                <span>Endereço</span>
-            </li>
-
-            <li>
-                <span class="numero-etapa">3</span>
-                <span>Responsável</span>
-            </li>
-
-            <li>
-                <span class="numero-etapa">4</span>
-                <span>Confirmação</span>
-            </li>
-
-        </ol>
-
-
-        <!-- Formulário principal de cadastro da empresa -->
-
-
-    </main>
 
 </body>
 
