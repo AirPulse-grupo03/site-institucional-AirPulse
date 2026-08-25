@@ -4,56 +4,23 @@
 
 }
 
+button{
+    cursor: pointer;
+}
+
+a{
+    cursor: pointer;
+}
+
 .pagina{
     background-color: #F8F9FF;
     width: 100%;
-    height: 586px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 
-}
-
-.header{
-    width: 100%;
-    height: 65px;
-    border: 1px solid rgba(122, 144, 184, 0.2);
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logoHeader{
-    width: 60px;
-    height: 60px;
-    margin-left: 30px;
-}
-
-.divNavBar{
-    width: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-evenly;
-    align-items: center;
-}
-
-.navBar{
-    color: #1800AD;
-}
-
-.btnLogin{
-    background-color: #1800AD;
-    border: none;
-    border-radius: 20px;
-    margin-right: 30px;
-}
-
-#btnLogin{
-    width: 100px;
-    height: 32px;
-    color: white;
 }
 
 .divTitulo{
@@ -67,7 +34,7 @@ justify-content: center;
 
 .subtitulo{
     color: #1800AD;
-    font-size: 18px;
+    font-size: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -76,7 +43,7 @@ justify-content: center;
 
 .titulo{
     color: black;
-    font-size: 40px;
+    font-size: 60px;
     font-weight: bolder;
 }
 
@@ -95,12 +62,12 @@ justify-content: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    gap: 100px;
+    gap: 150px;
 }
 
 .tituloFluxo{
     color: #1800AD;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bolder;
     display: flex;
     flex-direction: row;
@@ -110,8 +77,8 @@ justify-content: center;
 
 
 .boxContato{
-    width: 370px;
-    height: 350px;
+    width: 600px;
+    height: 500px;
     background-color: #1800AD;
     border: none;
     border-radius: 20px;
@@ -130,7 +97,7 @@ justify-content: center;
 }
 
 .tituloContato{
-    font-size: 27px;
+    font-size: 38px;
     font-weight: bolder;
     display: flex;
     flex-direction: column;
@@ -140,10 +107,10 @@ justify-content: center;
 }
 
 #descricao{
-    width: 300px;
+    width: 400px;
     height: 60px;
     display: flex;
-    font-size: 18px;
+    font-size: 25px;
     align-items: center;
     justify-content: center;
     flex-direction: row;
@@ -160,8 +127,8 @@ justify-content: center;
 }
 
 #btnEmail{
-    width: 190px;
-    height: 35px;
+    width: 300px;
+    height: 45px;
     background-color: white;
     color: #1800AD;
     border: none;
@@ -170,12 +137,13 @@ justify-content: center;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 18px;
+    font-size: 18px;
 }
 
 #btnTelefone{
-    width: 150px;
-    height: 35px;
+    width: 250px;
+    height: 45px;
     background-color: white;
     color: #1800AD;
     border: none;
@@ -184,5 +152,6 @@ justify-content: center;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 18px;
+    font-size: 18px;
 }
