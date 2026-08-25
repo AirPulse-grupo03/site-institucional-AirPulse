@@ -5,25 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon/AirPulse__2_-removebg-preview.png">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/cadastro_funcionario.css">
     <title>Cadastro de Funcionário</title>
 </head>
 <body>
     <div class="header">
-        <img class="Logo" src="assets/icon/AirPulse__2_-removebg-preview.png" width="55px">
-        
+        <img class="Logo" src="assets/icon/logo-airpulse.png" width="70px">
+
         <div class="navbar">
             <a class="nav" href="index.html">
-                <div>MENU</div>
+                <div>Início</div>
             </a>
-            <a class="nav" href="">
-                <div>Sobre nós</div>
+            <a class="nav" href="index.html#nosso-servico">
+                <div>Serviço</div>
+            </a>
+            <a class="nav" href="index.html#sobre-nos">
+                <div>Sobre Nós</div>
+            </a>
+            <a class="nav" href="index.html#contato">
+                <div>Contato</div>
             </a>
         </div>
 
         <div class="acesso">
-            <button class="btn-header" id="btn-cadastro">Cadastro</button>
-            <button class="btn-header" id="btn-login">Login</button>
+            <a href="login.html">
+                <button class="btn-cadastro">Login</button>
+            </a>
+            <button class="btn-cadastro">Entrar em contato</button>
         </div>
     </div>
 
@@ -48,17 +57,6 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="cargo">Cargo</label>
-                        <select id="cargo">
-                            <option value="" disabled selected>Selecione o cargo</option>
-                            <option value="piloto">Piloto</option>
-                            <option value="comissario">Comissário</option>
-                            <option value="mecanico">Mecânico</option>
-                            <option value="atendente">Atendente</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
                         <label for="cpf">CPF</label>
                         <input type="text" id="cpf" placeholder="000.000.000-00">
                     </div>
@@ -73,13 +71,7 @@
                         <input type="text" id="telefone" placeholder="+55 11 9 0000-0000">
                     </div>
 
-                    <div class="input-group">
-                        <label for="admin">Administrador</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="admin" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
+
                 </div>
 
                 <div class="form-actions">
