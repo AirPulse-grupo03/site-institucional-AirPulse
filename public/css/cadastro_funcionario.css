@@ -1,18 +1,18 @@
 /* estilos gerais do container de cadastro */
 .container-cadastro {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-body);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 65px); /* descontando o header */
-    background-color: #f9f9fb;
+    background-color: var(--bg-page);
     padding: 40px 20px;
     box-sizing: border-box;
 }
 
 /* caixa branca principal onde fica o formulario */
 .box-cadastro {
-    background-color: #ffffff;
+    background-color: var(--bg-surface);
     width: 100%;
     max-width: 700px;
     padding: 40px;
@@ -24,7 +24,8 @@
 /* titulo do formulario */
 .titulo-cadastro {
     text-align: center;
-    color: #111;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
     font-size: 24px;
     margin-bottom: 40px;
 }
@@ -47,7 +48,7 @@
 .input-group label {
     font-size: 13px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 
@@ -56,10 +57,10 @@
 .input-group input[type="password"],
 .input-group select {
     padding: 12px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-soft);
     border-radius: 6px;
     font-size: 14px;
-    color: #333;
+    color: var(--text-primary);
     outline: none;
     transition: border-color 0.2s ease;
     box-sizing: border-box;
@@ -72,7 +73,7 @@
 
 .input-group input:focus,
 .input-group select:focus {
-    border-color: #1800ad;
+    border-color: var(--color-primary);
 }
 
 /* estilo do botao de alternancia para administrador */
@@ -115,7 +116,7 @@
 }
 
 input:checked + .slider {
-    background-color: #6ea8fe;
+    background-color: var(--color-primary);
 }
 
 input:checked + .slider:before {
@@ -142,23 +143,23 @@ input:checked + .slider:before {
 }
 
 .btn-voltar {
-    background-color: #ffffff;
-    color: #1800ad;
-    border: 1px solid #1800ad;
+    background-color: var(--bg-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
 }
 
 .btn-voltar:hover {
-    background-color: #f4f2ff;
+    background-color: var(--bg-input);
 }
 
 .btn-proximo {
-    background-color: #1800ad;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-white);
     border: none;
 }
 
 .btn-proximo:hover {
-    background-color: #13008a;
+    background-color: var(--color-primary-dark);
 }
 
 /* adaptacao para telas menores celulares */

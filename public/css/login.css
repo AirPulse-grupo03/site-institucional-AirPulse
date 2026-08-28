@@ -1,23 +1,12 @@
+/*
+   As variáveis de cor/fonte da marca (--color-primary, --text-primary,
+   --bg-input, --border-soft etc.) agora vêm de css/global.css, que deve
+   ser carregado antes deste arquivo. Aqui ficam só variáveis específicas
+   desta página.
+*/
 :root {
-    /* AZUL PRIMARY */
-    --color-primary: #4326D9;
-    --color-primary-dark: #2E1AA8;
-    --color-primary-light: #6B4FF0;
-
-    /* BACKGROUND */
-    --bg-main: #ffffff;
-    --bg-panel-dark: #2A1BAF;
-    --bg-input: #F4F2FC;
-
-    /* TEXTO */
-    --text-primary: #1A1A2E;
-    --text-secondary: #6B6B80;
-    --text-on-dark: #ffffff;
-    --text-on-dark-secondary: #C7BEF5;
-
-    /* BORDAS */
-    --border-soft: #E5E3F3;
-    --border-medium: #D6D2ED;
+    --bg-main: var(--bg-surface);
+    --bg-panel-dark: var(--color-primary-dark);
 
     /* DECORAÇÃO */
     --decoration-circle: rgba(255, 255, 255, 0.06);
@@ -39,7 +28,7 @@ html {
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-weight: 400;
     height: 100%;
     overflow: hidden;
@@ -50,7 +39,7 @@ a {
 }
 
 button {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     border: none;
 }
 
@@ -66,7 +55,7 @@ button {
 .login-left-panel {
     width: 42%;
     background-color: var(--bg-panel-dark);
-    background-image: linear-gradient(160deg, #3A22C9 0%, #200F8F 100%);
+    background-image: var(--gradient-brand);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -126,6 +115,7 @@ button {
     color: var(--text-on-dark);
 
     span {
+        font-family: var(--font-heading);
         font-size: 20px;
         font-weight: 700;
     }
@@ -155,6 +145,7 @@ button {
 }
 
 .login-welcome-title {
+    font-family: var(--font-heading);
     font-size: clamp(22px, 3.4vh, 38px);
     font-weight: 800;
     line-height: 1.25;
@@ -251,6 +242,7 @@ button {
     gap: .4rem;
 
     h2 {
+        font-family: var(--font-heading);
         font-size: clamp(20px, 3.2vh, 26px);
         font-weight: 800;
         color: var(--text-primary);

@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Fontes já importadas centralmente em global.css (Inter + Sora) */
 
 * {
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
 }
 
 /*Banner-----------------------------------------------------------------*/
@@ -25,20 +25,22 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    border-bottom: 5px solid #f0f4ff;
+    border-bottom: 5px solid var(--bg-soft);
 }
 
 #tituloBanner {
-    color: #361ed2;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
     font-size: 20px;
     margin-left: 5%;
     font-weight: 800;
 }
 
 #slogan {
+    font-family: var(--font-heading);
     font-size: 50px;
     font-weight: 800;
-    color: #0d1240;
+    color: var(--text-primary);
     line-height: 1.2;
     margin-bottom: 20px;
     max-width: 450px;
@@ -47,12 +49,12 @@
 }
 
 .destaque-banner {
-    color: #361ed2;
+    color: var(--color-primary);
 }
 
 .subtituloBanner {
     font-size: 15px;
-    color: #6b7280;
+    color: var(--text-secondary);
     line-height: 1.65;
     max-width: 400px;
     margin-left: 5%;
@@ -77,31 +79,31 @@
     justify-content: flex-start;
     gap: 24px;
     padding: 55px 55px;
-    border-right: 2px solid #EBF0FF;
+    border-right: 2px solid var(--border-soft);
 }
 
 .icone-pilar-beneficios {
     width: 100px;
     height: 55px;
-    background-color: #EBF0FF;
+    background-color: var(--color-primary-soft);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
-    color: #1800AD;
+    color: var(--color-primary-dark);
 }
 
 .icone-pilar-beneficios:hover  {
-    background-color: #2d45f5;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-white);
     transition: background-color 0.25s, color 0.25s;
 }
 
 
 /*nosso serviço ----------------------------------------------------------*/
 .secao-nosso-servico {
-    background-color: #DCF6FF;
+    background-color: var(--bg-soft);
     padding: 80px 120px;
 }
 
@@ -156,17 +158,15 @@
 }
 
 
-html {
-    scroll-behavior: smooth;
-}
+/* scroll-behavior: smooth já definido globalmente em global.css */
 
 .secoes-principais {
-    background-color: #ffffff;
+    background-color: var(--bg-surface);
     padding: 80px 120px;
 }
 
 .secao-como-funciona {
-    background-color: #DCF6FF;
+    background-color: var(--bg-soft);
     padding: 80px 120px;
 }
 
@@ -183,14 +183,14 @@ html {
     display: block;
     width: 80px;
     height: 1px;
-    background-color: #6b7aff;
+    background-color: var(--color-primary-light);
 }
 
 .texto-rotulo {
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 3px;
-    color: #361ed2;
+    color: var(--color-primary);
 }
 
 /* Cabeçalhos e subtitulos ----------------------------------------------- */
@@ -204,16 +204,18 @@ html {
 }
 
 .titulos-secundarios {
+    font-family: var(--font-heading);
     font-size: 30px;
     font-weight: 800;
-    color: #0d1240;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .titulos-principais {
+    font-family: var(--font-heading);
     font-size: 36px;
     font-weight: 800;
-    color: #0d1240;
+    color: var(--text-primary);
     line-height: 1.25;
     margin-bottom: 20px;
     max-width: 680px;
@@ -222,13 +224,13 @@ html {
 }
 
 .destaque-azul {
-    color: #2d45f5;
+    color: var(--color-primary);
 }
 
 
 .descricao-principal {
     font-size: 15px;
-    color: #6b7280;
+    color: var(--text-secondary);
     max-width: 540px;
     margin: 0 auto;
     line-height: 1.7;
@@ -240,15 +242,16 @@ html {
 }
 
 .subtitulo-bloco {
+    font-family: var(--font-heading);
     font-size: 30px;
     font-weight: 700;
-    color: #0d1240;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .texto-bloco {
     font-size: 17px;
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-bottom: 32px;
 }
 
@@ -263,13 +266,13 @@ html {
 .diagrama-negocio {
     height: 50%;
     width: 100%;
-    border: 3px solid #361ed2;
+    border: 3px solid var(--color-primary);
 }
 
 .cartao-pilar {
     flex: 1;
-    background-color: #f8f9ff;
-    border: 1px solid #e8eaff;
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border-soft);
     border-radius: 12px;
     padding: 28px 24px;
     transition: transform 0.25s, box-shadow 0.25s;
@@ -277,45 +280,45 @@ html {
 
 .cartao-pilar:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 28px rgba(45, 69, 245, 0.1);
+    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.15);
 }
 
 .icone-pilar {
     width: 44px;
     height: 44px;
-    background-color: #2d45f5;
+    background-color: var(--color-primary);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
-    color: #ffffff;
+    color: var(--color-white);
 }
 
 .nome-pilar {
     font-size: 15px;
     font-weight: 700;
-    color: #0d1240;
+    color: var(--text-primary);
     margin-bottom: 10px;
 }
 
 .descricao-pilar {
     font-size: 13px;
-    color: #6b7280;
+    color: var(--text-secondary);
     line-height: 1.65;
 }
 
 /*historia---------------------------------------------------*/
 
 .secao-historia {
-    background-color: #ffffff;
+    background-color: var(--bg-surface);
     padding: 80px 120px;
-    border-top: 1px solid #f0f0f5;
+    border-top: 1px solid var(--border-soft);
 }
 
 .subtitulo-historia {
     font-size: 14px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .conteudo-historia {
@@ -330,27 +333,28 @@ html {
 }
 
 .cartao-historia {
-    background-color: #f8f9ff;
-    border: 1px solid #e8eaff;
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border-soft);
     border-radius: 12px;
     padding: 32px;
     transition: box-shadow 0.25s;
 }
 
 .cartao-historia:hover {
-    box-shadow: 0 8px 24px rgba(45, 69, 245, 0.08);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.12);
 }
 
 .titulo-cartao-historia {
+    font-family: var(--font-heading);
     font-size: 16px;
     font-weight: 700;
-    color: #0d1240;
+    color: var(--text-primary);
     margin-bottom: 12px;
 }
 
 .paragrafo-historia {
     font-size: 13px;
-    color: #6b7280;
+    color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 24px;
 }
@@ -367,7 +371,7 @@ html {
     align-items: flex-start;
     gap: 12px;
     font-size: 13px;
-    color: #374151;
+    color: var(--text-secondary);
     line-height: 1.55;
 }
 
@@ -377,7 +381,7 @@ html {
     height: 10px;
     min-width: 10px;
     border-radius: 50%;
-    background-color: #2d45f5;
+    background-color: var(--color-primary);
     margin-top: 4px;
 }
 
@@ -404,13 +408,13 @@ html {
 /*diferenciais ----------------------------------------------------------*/
 
 .secao-diferenciais {
-    background-color: #f0f4ff;
+    background-color: var(--bg-soft);
     padding: 80px 120px;
 }
 
 .subtitulo-diferenciais {
     font-size: 14px;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .grade-diferenciais {
@@ -421,8 +425,8 @@ html {
 
 .cartao-diferencial {
     flex: 1;
-    background-color: #ffffff;
-    border: 1px solid #e8eaff;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-soft);
     border-radius: 12px;
     padding: 28px 24px;
     transition: transform 0.25s, box-shadow 0.25s;
@@ -430,70 +434,71 @@ html {
 
 .cartao-diferencial:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 28px rgba(45, 69, 245, 0.1);
+    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.15);
 }
 
 .cartao-diferencial:hover .icone-diferencial {
-    background-color: #2d45f5;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-white);
     transition: background-color 0.25s, color 0.25s;
 }
 
 .icone-diferencial {
     width: 44px;
     height: 44px;
-    background-color: #eef1ff;
+    background-color: var(--color-primary-soft);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
-    color: #2d45f5;
+    color: var(--color-primary);
 }
 
 .nome-diferencial {
     font-size: 15px;
     font-weight: 700;
-    color: #0d1240;
+    color: var(--text-primary);
     margin-bottom: 10px;
 }
 
 .descricao-diferencial {
     font-size: 13px;
-    color: #6b7280;
+    color: var(--text-secondary);
     line-height: 1.65;
 }
 
 /*contato----------------------------------------------------*/
 
 .secao-cta {
-    background-color: #f0f4ff;
+    background-color: var(--bg-soft);
     padding: 60px 120px;
     display: flex;
     justify-content: center;
 }
 
 .caixa-cta {
-    background-color: #1a1f8e;
+    background: var(--gradient-brand);
     border-radius: 20px;
     padding: 60px 80px;
     text-align: center;
     width: 100%;
     max-width: 860px;
-    box-shadow: 0 20px 60px rgba(26, 31, 142, 0.35);
+    box-shadow: 0 20px 60px rgba(26, 35, 126, 0.35);
 }
 
 .titulo-cta {
+    font-family: var(--font-heading);
     font-size: 28px;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--color-white);
     margin-bottom: 16px;
     line-height: 1.3;
 }
 
 .descricao-cta {
     font-size: 14px;
-    color: #b0b8ff;
+    color: var(--text-on-dark-secondary);
     margin-bottom: 36px;
     line-height: 1.7;
     max-width: 540px;
@@ -512,8 +517,8 @@ html {
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    color: var(--color-white);
+    border: 2px solid var(--color-white);
     border-radius: 8px;
     padding: 12px 28px;
     cursor: pointer;
@@ -521,16 +526,16 @@ html {
 }
 
 .botao-cta-primario:hover {
-    background-color: #ffffff;
-    color: #1a1f8e;
+    background-color: var(--color-white);
+    color: var(--color-primary-dark);
 }
 
 .botao-cta-secundario {
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    color: #ffffff;
-    background-color: #2d45f5;
+    color: var(--color-white);
+    background-color: var(--color-primary);
     border-radius: 8px;
     padding: 12px 28px;
     cursor: pointer;
@@ -538,5 +543,5 @@ html {
 }
 
 .botao-cta-secundario:hover {
-    background-color: #1a2fd4;
+    background-color: var(--color-primary-dark);
 }

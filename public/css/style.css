@@ -1,17 +1,22 @@
-/* cores usadas na pagina */
+/*
+   As cores de marca (--color-primary, --text-primary, --border-soft etc.)
+   agora vêm de css/global.css, que deve ser carregado antes deste arquivo.
+   Aqui ficam só o alias em português já usado no resto deste arquivo
+   (apontando pras variáveis centrais) e o que é específico desta página.
+*/
 :root {
-  --cor-primaria: #2100c7;
-  --cor-primaria-escura: #16008d;
-  --cor-texto: #0b092d;
-  --cor-texto-secundario: #697394;
-  --cor-borda: #d8dcf5;
-  --fundo-campo: #f8f9ff;
-  --fundo-superficie: #ffffff;
-  --fundo-pagina: #f7f8ff;
-  --azul-suave: #ddf7ff;
-  --cor-erro: #c52233;
-  --cor-sucesso: #087a55;
-  --sombra-padrao: 0 18px 50px rgba(31, 23, 103, 0.08);
+  --cor-primaria: var(--color-primary);
+  --cor-primaria-escura: var(--color-primary-dark);
+  --cor-texto: var(--text-primary);
+  --cor-texto-secundario: var(--text-secondary);
+  --cor-borda: var(--border-soft);
+  --fundo-campo: var(--bg-input);
+  --fundo-superficie: var(--bg-surface);
+  --fundo-pagina: var(--bg-page);
+  --azul-suave: var(--color-primary-soft);
+  --cor-erro: var(--color-error);
+  --cor-sucesso: var(--color-success);
+  --sombra-padrao: 0 18px 50px rgba(26, 35, 126, 0.1);
 }
 
 
@@ -63,7 +68,7 @@ a {
   gap: 24px;
   padding: 8px clamp(24px, 4vw, 72px);
   background: var(--fundo-superficie);
-  border-bottom: 1px solid #e6e8f7;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 
@@ -73,6 +78,7 @@ a {
   align-items: center;
   gap: 14px;
   color: var(--cor-primaria-escura);
+  font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 800;
   text-decoration: none;
@@ -139,6 +145,7 @@ h1 {
   margin: 8px 0 4px;
   flex-shrink: 0;
   text-align: center;
+  font-family: var(--font-heading);
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -167,7 +174,7 @@ h1 {
 .progress li {
   position: relative;
   min-width: 0;
-  color: #99a2c3;
+  color: rgba(107, 114, 128, 0.6);
   text-align: center;
   font-size: 12px;
   font-weight: 700;
@@ -199,7 +206,7 @@ h1 {
   border: 2px solid var(--cor-borda);
   border-radius: 50%;
   background: var(--fundo-pagina);
-  color: #9aa4c7;
+  color: rgba(107, 114, 128, 0.65);
   font-size: 14px;
 }
 
@@ -254,6 +261,7 @@ h1 {
 h2 {
   margin: 0 0 18px;
   flex-shrink: 0;
+  font-family: var(--font-heading);
   font-size: clamp(22px, 2vw, 27px);
   letter-spacing: -0.02em;
 }
@@ -293,7 +301,7 @@ select {
   width: 100%;
   height: 50px;
   padding: 0 18px;
-  border: 1px solid #cfd4f4;
+  border: 1px solid var(--border-medium);
   border-radius: 13px;
   outline: none;
   background: var(--fundo-campo);
@@ -315,7 +323,7 @@ input:focus,
 select:focus {
   border-color: var(--cor-primaria);
   background: white;
-  box-shadow: 0 0 0 4px rgba(33, 0, 199, 0.12);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
 }
 
 
@@ -403,7 +411,7 @@ select.invalid {
 }
 
 .button:focus-visible {
-  outline: 3px solid rgba(33, 0, 199, 0.24);
+  outline: 3px solid rgba(79, 70, 229, 0.28);
   outline-offset: 3px;
 }
 
@@ -413,7 +421,7 @@ select.invalid {
   margin-left: auto;
   background: var(--cor-primaria);
   color: white;
-  box-shadow: 0 10px 24px rgba(33, 0, 199, 0.18);
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.22);
 }
 
 .button-primary:hover {
@@ -423,7 +431,7 @@ select.invalid {
 
 /* botão de voltar */
 .button-secondary {
-  border-color: #a9d9f0;
+  border-color: var(--border-medium);
   background: var(--azul-suave);
   color: var(--cor-primaria);
 }
@@ -433,6 +441,7 @@ select.invalid {
 .review-title {
   margin-bottom: 18px;
   text-align: center;
+  font-family: var(--font-heading);
   font-size: clamp(24px, 3vw, 32px);
 }
 
@@ -448,9 +457,9 @@ select.invalid {
 .review-section {
   position: relative;
   padding: 18px;
-  border: 1px solid #e0e3f4;
+  border: 1px solid var(--border-soft);
   border-radius: 15px;
-  background: #fbfbff;
+  background: var(--bg-soft);
 }
 
 .review-section.full {
@@ -477,7 +486,7 @@ select.invalid {
 /* botão de editar na revisão */
 .edit-button {
   padding: 6px 10px;
-  border: 1px solid #addcf2;
+  border: 1px solid var(--border-medium);
   border-radius: 8px;
   background: var(--azul-suave);
   color: var(--cor-primaria);
