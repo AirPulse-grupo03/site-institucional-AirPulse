@@ -1,0 +1,160 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    cursor: pointer;
+}
+
+.pagina{
+    background-color: var(--bg-page);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.divTitulo{
+width: 100%;
+height: 150px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.subtitulo{
+    color: var(--color-primary);
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.titulo{
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+#riscoTitulo{
+    width: 20px;
+    height: 2px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-primary);
+}
+
+.corpo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    gap: 150px;
+}
+
+.tituloFluxo{
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.boxContato{
+    width: 600px;
+    height: 500px;
+    background: var(--gradient-brand);
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#boxTituloContato{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tituloContato{
+    font-family: var(--font-heading);
+    font-size: 38px;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+#descricao{
+    width: 400px;
+    height: 60px;
+    display: flex;
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    color: var(--color-white);
+    text-align: center;
+}
+
+#boxBotoes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+#btnEmail{
+    width: 300px;
+    height: 45px;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    font-size: 18px;
+}
+
+#btnTelefone{
+    width: 250px;
+    height: 45px;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    font-size: 18px;
+}

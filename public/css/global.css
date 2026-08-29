@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+
+/*
+==========================================================================
+    IDENTIDADE VISUAL AIRPULSE (Conceito A — Pulse Flight)
+    Fonte única das cores e tipografia da marca. Todos os outros CSS do
+    projeto devem referenciar estas variáveis em vez de cores fixas.
+==========================================================================
+*/
+:root {
+    /* Cores de marca */
+    --color-primary: #4F46E5;
+    /* Azul Elétrico */
+    --color-primary-dark: #1A237E;
+    /* Azul Profundo */
+    --color-primary-light: #7B74EE;
+    --color-primary-soft: #EEF0FF;
+    --gradient-brand: linear-gradient(160deg, #4F46E5 0%, #1A237E 100%);
+
+    --color-white: #FFFFFF;
+
+    /* Texto */
+    --text-primary: #0D1240;
+    --text-secondary: #6B7280;
+    --text-on-dark: #FFFFFF;
+    --text-on-dark-secondary: #C7BEF5;
+
+    /* Fundos neutros */
+    --bg-page: #F7F8FF;
+    --bg-surface: #FFFFFF;
+    --bg-soft: #F0F1FF;
+    --bg-input: #F4F2FC;
+
+    /* Bordas */
+    --border-soft: #E5E3F3;
+    --border-medium: #D6D2ED;
+
+    /* Feedback (cores semânticas, mantidas por convenção de UX) */
+    --color-error: #C52233;
+    --color-success: #087A55;
+
+    /* Tipografia */
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*Header------------------------------------------------------*/
+.header {
+    width: 100%;
+    height: 65px;
+    background-color: var(--bg-soft);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Logo {
+    margin-left: 20px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-left: 120px;
+    transition: color 0.3s ease;
+    padding-bottom: 10px;
+    margin-top: 1%;
+
+}
+
+.nav {
+    color: var(--color-primary);
+    text-decoration: none;
+    position: relative;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.nav:hover {
+    color: var(--color-primary);
+}
+
+.nav::after {
+    content: '';
+    position: absolute;
+    bottom: 15;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav:hover::after {
+    transform: scaleX(1);
+}
+
+.acesso {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.btn-cadastro {
+    width: 150px;
+    height: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--color-primary);
+    font-size: 13px;
+    font-weight: 700;
+   cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-cadastro:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary-dark);
+}
+
+
+
+/*Footer----------------------------------------------------*/
+.footer {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    padding: 64px 120px 0;
+}
+
+.conteudo-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.coluna-marca {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.nome-marca-footer {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-white);
+}
+
+.descricao-marca-footer {
+    font-size: 13px;
+    color: var(--text-on-dark-secondary);
+    line-height: 1.65;
+    max-width: 220px;
+}
+
+.localizacao-footer {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.coluna-links-footer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.titulo-coluna-footer {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-on-dark-secondary);
+    margin-bottom: 4px;
+}
+
+.link-footer {
+    text-decoration: none;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s;
+}
+
+.link-footer:hover {
+    color: var(--color-white);
+}
+
+.barra-inferior-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.texto-direitos {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.versao-footer {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+}

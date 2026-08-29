@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de empresa - AirPulse</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/cadastro_empresa.css">
+</head>
+ 
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="#">
+      <img class="brand-logo" src="assets/icon/AirPulse__2_-removebg-preview.png" alt="AirPulse">
+      <span>AirPulse</span>
+    </a>
+
+    <div class="login-copy">
+      <span>Já tem conta?</span>
+      <a href="#">Entrar</a>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="eyebrow">Cadastro de empresa</div>
+
+    <h1>Comece a monitorar sua frota</h1>
+
+    <p class="subtitle">
+      Preencha as informações da sua empresa para criar sua conta AirPulse.
+    </p>
+
+    <ol class="progress" id="progress">
+      <li class="active" data-progress="1">
+        <span class="circle">1</span>
+        <span>Dados da empresa</span>
+      </li>
+
+      <li data-progress="2">
+        <span class="circle">2</span>
+        <span>Endereço</span>
+      </li>
+
+      <li data-progress="3">
+        <span class="circle">3</span>
+        <span>Responsável</span>
+      </li>
+
+      <li data-progress="4">
+        <span class="circle">4</span>
+        <span>Confirmação</span>
+      </li>
+    </ol>
+
+    <form id="company-form" novalidate>
+
+      <section class="card step" data-step="1">
+        <h2>Dados da empresa</h2>
+
+        <div class="grid">
+
+          <div class="field full">
+            <label for="razao-social">Razão social *</label>
+            <input id="razao-social" name="razao_social" type="text"
+              placeholder="Nome completo da empresa" required>
+            <p class="error" data-error="razao_social"></p>
+          </div>
+
+          <div class="field">
+            <label for="nome-fantasia">
+              Nome fantasia <span class="optional">(opcional)</span>
+            </label>
+            <input id="nome-fantasia" name="nome_fantasia" type="text"
+              placeholder="Nome comercial">
+            <p class="error" data-error="nome_fantasia"></p>
+          </div>
+
+          <div class="field">
+            <label for="cnpj">CNPJ *</label>
+            <input id="cnpj" name="cnpj" type="text" maxlength="18"
+              placeholder="00.000.000/0001-00" required>
+            <p class="error" data-error="cnpj"></p>
+          </div>
+
+          <div class="field">
+            <label for="segmento">Segmento de atuação *</label>
+
+            <select id="segmento" name="segmento" required>
+              <option value="">Selecione o segmento</option>
+              <option>Fabricante de sistemas embarcados</option>
+              <option>Fabricante de aeronaves</option>
+              <option>Manutenção aeronáutica</option>
+              <option>Operador aéreo</option>
+              <option>Outro</option>
+            </select>
+
+            <p class="error" data-error="segmento"></p>
+          </div>
+
+          <div class="field">
+            <label for="website">
+              Website <span class="optional">(opcional)</span>
+            </label>
+            <input id="website" name="website" type="url"
+              placeholder="https://empresa.com.br">
+            <p class="error" data-error="website"></p>
+          </div>
+
+          <div class="field full">
+            <label for="email-empresa">E-mail corporativo da empresa *</label>
+            <input id="email-empresa" name="email_empresa" type="email"
+              placeholder="contato@empresa.aero" required>
+            <p class="error" data-error="email_empresa"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="card step" data-step="2" hidden>
+        <h2>Endereço</h2>
+
+        <div class="grid">
+
+          <div class="field">
+            <label for="cep">CEP *</label>
+            <input id="cep" name="cep" type="text" maxlength="9"
+              placeholder="00000-000" required>
+            <p class="error" data-error="cep"></p>
+          </div>
+
+          <div class="field full">
+            <label for="logradouro">Logradouro *</label>
+            <input id="logradouro" name="logradouro" type="text"
+              placeholder="Rua, avenida, alameda..." required>
+            <p class="error" data-error="logradouro"></p>
+          </div>
+
+          <div class="field">
+            <label for="bairro">Bairro *</label>
+            <input id="bairro" name="bairro" type="text"
+              placeholder="Bairro" required>
+            <p class="error" data-error="bairro"></p>
+          </div>
+
+          <div class="field">
+            <label for="numero">Número *</label>
+            <input id="numero" name="numero" type="text"
+              placeholder="123 ou S/N" required>
+            <p class="error" data-error="numero"></p>
+          </div>
+
+          <div class="field">
+            <label for="estado">Estado *</label>
+
+            <select id="estado" name="estado" required>
+              <option value="">Selecione</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+
+            <p class="error" data-error="estado"></p>
+          </div>
+
+          <div class="field">
+            <label for="cidade">Cidade *</label>
+            <input id="cidade" name="cidade" type="text"
+              placeholder="São Paulo" required>
+            <p class="error" data-error="cidade"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="card step" data-step="3" hidden>
+        <h2>Responsável pela conta</h2>
+
+        <div class="grid">
+
+          <div class="field full">
+            <label for="responsavel">Nome completo *</label>
+            <input id="responsavel" name="responsavel" type="text"
+              placeholder="Nome e sobrenome" required>
+            <p class="error" data-error="responsavel"></p>
+          </div>
+
+          <div class="field">
+            <label for="email-responsavel">E-mail corporativo *</label>
+            <input id="email-responsavel" name="email_responsavel" type="email"
+              placeholder="nome@empresa.aero" required>
+            <p class="error" data-error="email_responsavel"></p>
+          </div>
+
+          <div class="field">
+            <label for="telefone">Telefone *</label>
+            <input id="telefone" name="telefone" type="tel" maxlength="15"
+              placeholder="(11) 90000-0000" required>
+            <p class="error" data-error="telefone"></p>
+          </div>
+
+          <div class="field">
+            <label for="cargo">Cargo *</label>
+
+            <select id="cargo" name="cargo" required>
+              <option value="">Selecione o cargo</option>
+              <option>Administrador</option>
+              <option>Gestor de operações</option>
+              <option>Engenheiro de sistemas</option>
+              <option>Analista de monitoramento</option>
+              <option>Outro</option>
+            </select>
+
+            <p class="error" data-error="cargo"></p>
+          </div>
+
+          <div class="field">
+            <label for="cpf">CPF *</label>
+            <input id="cpf" name="cpf" type="text" maxlength="14"
+              placeholder="000.000.000-00" required>
+            <p class="error" data-error="cpf"></p>
+          </div>
+
+          <div class="field">
+            <label for="senha">Senha *</label>
+
+            <div class="password-wrap">
+              <input id="senha" name="senha" type="password" minlength="8"
+                placeholder="Crie uma senha" required>
+
+              <button class="show-password" type="button" data-password="senha">
+                Mostrar
+              </button>
+            </div>
+
+            <p class="helper">Mínimo de 8 caracteres, com letra e número.</p>
+            <p class="error" data-error="senha"></p>
+          </div>
+
+          <div class="field">
+            <label for="confirmar-senha">Confirmar senha *</label>
+
+            <div class="password-wrap">
+              <input id="confirmar-senha" name="confirmar_senha" type="password"
+                placeholder="Repita a senha" required>
+
+              <button class="show-password" type="button" data-password="confirmar-senha">
+                Mostrar
+              </button>
+            </div>
+
+            <p class="helper">&nbsp;</p>
+            <p class="error" data-error="confirmar_senha"></p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="card step" data-step="4" hidden>
+        <h2 class="review-title">Confirme os dados informados</h2>
+        <div class="review-grid" id="review-content"></div>
+      </section>
+
+      <section class="card step" data-step="5" hidden>
+        <div class="success-screen">
+          <div class="success-icon">✓</div>
+          <h2>Cadastro concluído!</h2>
+          <p>
+            A empresa foi cadastrada com sucesso. Em uma integração real,
+            os dados seriam enviados com segurança para a API da AirPulse.
+          </p>
+        </div>
+      </section>
+
+      <div class="actions" id="actions">
+        <button class="button button-secondary" id="back-button" type="button" hidden>
+          🠔 Voltar
+        </button>
+
+        <button class="button button-primary" id="next-button" type="button">
+          Próximo passo ➔
+        </button>
+      </div>
+
+    </form>
+
+  </main>
+
+</body>
+
+<script src="./js/cadastro_empresa.js"></script>
+</html>
