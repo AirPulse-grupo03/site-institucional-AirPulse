@@ -246,28 +246,31 @@ function cadastrarEmpresa() {
     },
     body: JSON.stringify(payload)
   })
-  .then(resposta => {
+  .then(function (resposta) {
     if (resposta.ok) {
-      mostrarEtapa(5);
-      // Redireciona para o login após 4 segundos
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 4000);
+      return resposta.json().then(function (dados) {
+        mostrarEtapa(5);
+        setTimeout(function () {
+          window.location.href = "login.html";
+        }, 4000);
+      });
     } else {
-      resposta.json().then(erro => {
-        alert(erro.mensagem || "Houve um erro ao realizar o cadastro.");
-        avancar.disabled = false;
-        avancar.textContent = "Finalizar cadastro";
-      }).catch(() => {
-        alert("Houve um erro ao realizar o cadastro.");
+      return resposta.text().then(function (textoErro) {
+        // Tenta extrair a mensagem do JSON, senão mostra o texto cru
+        try {
+          var erroJson = JSON.parse(textoErro);
+          alert(erroJson.mensagem || textoErro);
+        } catch (e) {
+          alert(textoErro || "Houve um erro ao realizar o cadastro.");
+        }
         avancar.disabled = false;
         avancar.textContent = "Finalizar cadastro";
       });
     }
   })
-  .catch(erro => {
+  .catch(function (erro) {
     console.error("Erro na requisição:", erro);
-    alert("Erro de conexão com o servidor de API.");
+    alert("Erro de conexão com o servidor. Verifique se o servidor está rodando em http://localhost:3333");
     avancar.disabled = false;
     avancar.textContent = "Finalizar cadastro";
   });
