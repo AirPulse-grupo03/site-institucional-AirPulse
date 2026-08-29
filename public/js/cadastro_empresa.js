@@ -184,14 +184,94 @@ aplicarMascara("telefone-empresa", valor => {
     .replace(/(\d{5})(\d)/, "$1-$2");
 });
 
-/* Avança para a próxima etapa */
+/* Avança para a próxima etapa ou finaliza o cadastro */
 avancar.addEventListener("click", () => {
   if (!validarEtapa()) {
     return;
   }
 
-  mostrarEtapa(etapaAtual + 1);
+  if (etapaAtual === 4) {
+    cadastrarEmpresa();
+  } else {
+    mostrarEtapa(etapaAtual + 1);
+  }
 });
+
+/* Função que realiza o envio dos dados para o backend */
+function cadastrarEmpresa() {
+  // Limpar formatações (máscaras) de CNPJ, CPF, CEP, Telefone
+  const cnpjLimpo = document.querySelector("#cnpj").value.replace(/\D/g, "");
+  const cpfLimpo = document.querySelector("#cpf").value.replace(/\D/g, "");
+  const cepLimpo = document.querySelector("#cep").value.replace(/\D/g, "");
+  const telefoneEmpresaLimpo = document.querySelector("#telefone-empresa").value.replace(/\D/g, "");
+  const telefoneResponsavelLimpo = document.querySelector("#telefone").value.replace(/\D/g, "");
+
+  // Capturar todos os valores do formulário
+  const payload = {
+    // Dados da Empresa
+    razaoSocialServer: document.querySelector("#razao-social").value,
+    nomeFantasiaServer: document.querySelector("#nome-fantasia").value,
+    cnpjServer: cnpjLimpo,
+    segmentoServer: document.querySelector("#segmento").value,
+    websiteServer: document.querySelector("#website").value,
+    emailEmpresaServer: document.querySelector("#email-empresa").value,
+    telefoneEmpresaServer: telefoneEmpresaLimpo,
+
+    // Dados do Endereço
+    cepServer: cepLimpo,
+    logradouroServer: document.querySelector("#logradouro").value,
+    bairroServer: document.querySelector("#bairro").value,
+    numeroServer: document.querySelector("#numero").value,
+    complementoServer: document.querySelector("#complemento").value,
+    estadoServer: document.querySelector("#estado").value,
+    cidadeServer: document.querySelector("#cidade").value,
+
+    // Dados do Responsável
+    nomeResponsavelServer: document.querySelector("#responsavel").value,
+    emailResponsavelServer: document.querySelector("#email-responsavel").value,
+    telefoneResponsavelServer: telefoneResponsavelLimpo,
+    cargoResponsavelServer: document.querySelector("#cargo").value,
+    cpfResponsavelServer: cpfLimpo,
+    senhaResponsavelServer: document.querySelector("#senha").value
+  };
+
+  // Desabilitar o botão para evitar múltiplos cliques
+  avancar.disabled = true;
+  avancar.textContent = "Cadastrando...";
+
+  fetch("/empresas/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(resposta => {
+    if (resposta.ok) {
+      mostrarEtapa(5);
+      // Redireciona para o login após 4 segundos
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 4000);
+    } else {
+      resposta.json().then(erro => {
+        alert(erro.mensagem || "Houve um erro ao realizar o cadastro.");
+        avancar.disabled = false;
+        avancar.textContent = "Finalizar cadastro";
+      }).catch(() => {
+        alert("Houve um erro ao realizar o cadastro.");
+        avancar.disabled = false;
+        avancar.textContent = "Finalizar cadastro";
+      });
+    }
+  })
+  .catch(erro => {
+    console.error("Erro na requisição:", erro);
+    alert("Erro de conexão com o servidor de API.");
+    avancar.disabled = false;
+    avancar.textContent = "Finalizar cadastro";
+  });
+}
 
 /* Volta para a etapa anterior */
 voltar.addEventListener("click", () => {
