@@ -656,7 +656,7 @@ select.invalid {
 
 
 /* Celulares pequenos, incluindo 320px */
-@media (max-width: 320px) {
+@media (max-width: 400px) {
   .topbar {
     height: 60px;
     padding: 6px 10px;
