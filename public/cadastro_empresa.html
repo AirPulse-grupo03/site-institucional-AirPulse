@@ -109,11 +109,18 @@
             <p class="error" data-error="website"></p>
           </div>
 
-          <div class="field full">
+          <div class="field">
             <label for="email-empresa">E-mail corporativo da empresa *</label>
             <input id="email-empresa" name="email_empresa" type="email"
               placeholder="contato@empresa.aero" required>
             <p class="error" data-error="email_empresa"></p>
+          </div>
+
+          <div class="field">
+            <label for="telefone-empresa">Telefone da empresa *</label>
+            <input id="telefone-empresa" name="telefone_empresa" type="tel" maxlength="15"
+              placeholder="(11) 90000-0000" required>
+            <p class="error" data-error="telefone_empresa"></p>
           </div>
 
         </div>
@@ -150,6 +157,13 @@
             <input id="numero" name="numero" type="text"
               placeholder="123 ou S/N" required>
             <p class="error" data-error="numero"></p>
+          </div>
+
+          <div class="field">
+            <label for="complemento">Complemento <span class="optional">(opcional)</span></label>
+            <input id="complemento" name="complemento" type="text"
+              placeholder="Apto, Bloco, Sala, etc.">
+            <p class="error" data-error="complemento"></p>
           </div>
 
           <div class="field">

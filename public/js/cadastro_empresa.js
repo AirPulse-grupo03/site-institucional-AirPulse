@@ -108,12 +108,14 @@ function montarRevisao() {
     <p>CNPJ: ${valor("cnpj")}</p>
     <p>Segmento: ${valor("segmento")}</p>
     <p>E-mail: ${valor("email-empresa")}</p>
+    <p>Telefone: ${valor("telefone-empresa")}</p>
 
     <h3>Endereço</h3>
     <p>CEP: ${valor("cep")}</p>
     <p>Logradouro: ${valor("logradouro")}</p>
     <p>Bairro: ${valor("bairro")}</p>
     <p>Número: ${valor("numero")}</p>
+    <p>Complemento: ${valor("complemento")}</p>
     <p>Estado: ${valor("estado")}</p>
     <p>Cidade: ${valor("cidade")}</p>
 
@@ -167,6 +169,14 @@ aplicarMascara("cep", valor => {
 
 /* Máscara de telefone */
 aplicarMascara("telefone", valor => {
+  return valor
+    .replace(/\D/g, "")
+    .slice(0, 11)
+    .replace(/^(\d{2})(\d)/, "($1) $2")
+    .replace(/(\d{5})(\d)/, "$1-$2");
+});
+
+aplicarMascara("telefone-empresa", valor => {
   return valor
     .replace(/\D/g, "")
     .slice(0, 11)

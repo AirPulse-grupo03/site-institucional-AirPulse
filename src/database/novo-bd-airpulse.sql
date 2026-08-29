@@ -35,6 +35,7 @@ CREATE TABLE funcionario (
     email_corporativo VARCHAR(200) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
     cpf CHAR(11) NOT NULL,
+    cargo VARCHAR(50),
     adm TINYINT NOT NULL, -- ADM ou comum
     senha VARCHAR(200) NOT NULL,
     status_sistema TINYINT NOT NULL,
