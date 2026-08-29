@@ -554,9 +554,11 @@ select.invalid {
 
 
 /* ajustes para celular */
+/* Tablet e celular */
 @media (max-width: 768px) {
   html,
   body {
+    overflow-x: hidden;
     overflow-y: auto;
   }
 
@@ -620,12 +622,14 @@ select.invalid {
   }
 
   .card {
+    width: 100%;
     padding: 24px 20px;
     overflow: visible;
   }
 
   .grid,
-  .review-grid {
+  .review-grid,
+  .review-list {
     grid-template-columns: 1fr;
   }
 
@@ -634,13 +638,10 @@ select.invalid {
     grid-column: auto;
   }
 
-  .review-list {
-    grid-template-columns: 1fr;
-  }
-
   .actions {
     flex-direction: column-reverse;
     align-items: stretch;
+    gap: 12px;
   }
 
   .button {
@@ -650,5 +651,110 @@ select.invalid {
 
   .button-primary {
     margin-left: 0;
+  }
+}
+
+
+/* Celulares pequenos, incluindo 320px */
+@media (max-width: 320px) {
+  .topbar {
+    height: 60px;
+    padding: 6px 10px;
+  }
+
+  .brand-logo {
+    width: 60px;
+    height: auto;
+  }
+
+  .login-copy {
+    font-size: 11px;
+  }
+
+  main {
+    min-height: calc(100dvh - 60px);
+    padding: 16px 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .eyebrow {
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .eyebrow::before,
+  .eyebrow::after {
+    width: 12vw;
+  }
+
+  .progress {
+    width: 100%;
+    margin: 16px auto;
+  }
+
+  .progress li {
+    font-size: 9px;
+  }
+
+  .progress .circle {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .progress li:not(:last-child)::after {
+    top: 14px;
+    left: calc(50% + 19px);
+    width: calc(100% - 38px);
+  }
+
+  .card {
+    padding: 18px 12px;
+    border-radius: 12px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    min-width: 0;
+    font-size: 16px;
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  .button {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+}
+
+
+/* Computador com janela minimizada na altura */
+@media (max-height: 750px) and (min-width: 769px) {
+  html,
+  body {
+    overflow-y: auto;
+  }
+
+  main {
+    height: auto;
+    min-height: calc(100dvh - 70px);
+    overflow: visible;
+  }
+
+  .card {
+    overflow: visible;
   }
 }
