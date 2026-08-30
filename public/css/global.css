@@ -62,23 +62,24 @@ html {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    padding: 0 20px;
 }
 
 .Logo {
-    margin-left: 20px;
+   
     width: 160px;
     height:55px;
 }
 
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    transition: color 0.3s ease;
-    padding-bottom: 10px;
-    margin-top: 1%;
+    
+
+    justify-self: center; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  transition: color 0.3s ease;
 
 }
 
@@ -140,6 +141,24 @@ html {
     color: var(--color-primary-dark);
 }
 
+.btn-sanduiche{
+ width: 80px;
+    height: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 20px;
+    border: 1px solid var(--color-primary);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s; 
+    display: none;  
+}
+
+.btn-sanduiche:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary-dark);
+}
 
 
 /*Footer----------------------------------------------------*/
@@ -225,4 +244,83 @@ html {
 .versao-footer {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.55);
+}
+
+/*media querie para telas menores que 760px*/
+@media (max-width: 760px){
+    .btn-sanduiche{
+        display: block;
+         margin-left: auto;
+    }
+
+    .navbar{
+        display: none;
+    }
+
+    .acesso{
+        display: none;
+    }
+
+    .header{
+    grid-template-columns: 1fr 1fr;
+    }
+
+    /* faz aparecer o style do menu aberto*/
+    .navbar.menu-aberto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 60px; 
+    left: 50%;
+    width: 50%;
+    background-color: var(--bg-soft);
+    z-index: 1000;
+    }
+
+    /*novo posicionamento da classe .acesso*/
+    .navbar.menu-aberto .acesso {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+    margin-right: 0; 
+  }
+
+ /*tira o style de botao e deixa igual aos links da navbar*/
+ .navbar.menu-aberto .btn-cadastro {
+    position: relative;
+    background: transparent;
+    border: none;
+    height: auto;
+    font-size: inherit;
+    color: var(--color-primary);
+  }
+
+/*barrinha adicionada nos botoes de entre em contato e login*/
+  .navbar.menu-aberto .btn-cadastro::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+
+  .navbar.menu-aberto .btn-cadastro:hover::after {
+    transform: scaleX(1);
+  }
+
+}
+
+@media (max-width: 650px){
+    
 }

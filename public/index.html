@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="icon" href="assets/icon/logo-airpulse.png">
+    <script src="js/home.js"></script>
     <title>AirPulse</title>
 </head>
 
@@ -14,7 +15,7 @@
     <div class="header">
         <img class="Logo" src="assets/AirPulse_Logo_Pack/Fundo transparente/04_Reduzida_Sem_Tagline.png" width="70px">
 
-        <div class="navbar">
+        <div class="navbar" id="navbar">
             <a class="nav" href="">
                 <div>Início</div>
             </a>
@@ -27,7 +28,7 @@
             <a class="nav" href="#sobre-nos">
                 <div>Sobre Nós</div>
             </a>
-        </div>
+        
 
         <div class="acesso">
             <a href="login.html">
@@ -36,6 +37,15 @@
             <a href="#secao-cta">
                 <button class="btn-cadastro">Entrar em contato</button>
             </a>
+        </div></div>
+        <div>
+            <button class="btn-sanduiche" onclick="abrirMenuLaterar()">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+            </button>
         </div>
     </div>
 
@@ -504,7 +514,7 @@
         <div class="corpo-entre-contato">
             <div class="fluxoCadastro">
                 <div class="titulos-principais-contato">Como cadastrar sua empresa</div>
-                <img src="assets/imgs/fluxoCadastro.png" alt="" width="600px">
+                <img class="imagem-fluxo-cadastro" src="assets/imgs/fluxoCadastro.png" alt="">
             </div>
 
             <div class="boxContato">
