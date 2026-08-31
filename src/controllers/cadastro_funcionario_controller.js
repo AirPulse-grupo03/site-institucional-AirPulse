@@ -1,4 +1,4 @@
-var usuarioModel = require("../models/cadastro_funcionario_model");
+var cadastro_funcionario_model = require("../models/cadastro_funcionario_model");
 
 
 function cadastrar(req, res) {
@@ -8,7 +8,7 @@ function cadastrar(req, res) {
     var cpf = req.body.cpfServer;
     var senha = req.body.senhaServer;
     var telefone = req.body.telefoneServer;
-    var fkEmpresa = req.body.idEmpresaServer;
+    //var fkEmpresa = req.body.idEmpresaServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -22,12 +22,14 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else if (telefone == undefined) {
         res.status(400).send("Seu telefone está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
-    } else {
+    }
+    //  else if (fkEmpresa == undefined) {
+    //     res.status(400).send("Sua empresa a vincular está undefined!");
+    // } 
+    else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        cadastro_funcionario_model.cadastrar(nome, email, dtNascimento, cpf, senha, telefone, fkEmpresa)
+        cadastro_funcionario_model.cadastrar(nome, email, dtNascimento, cpf, senha, telefone)
             .then(
                 function (resultado) {
                     res.json(resultado);

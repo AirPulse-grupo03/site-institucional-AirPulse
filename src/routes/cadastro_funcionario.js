@@ -5,7 +5,7 @@ var cadastro_funcionario_controller = require("../controllers/cadastro_funcionar
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
-    usuarioController.cadastrar(req, res);
+    cadastro_funcionario_controller.cadastrar(req, res);
 })
 
 module.exports = router;

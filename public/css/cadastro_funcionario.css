@@ -162,6 +162,25 @@ input:checked + .slider:before {
     background-color: var(--color-primary-dark);
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_erro{
+    width: 250px;
+    height: 100px;
+    padding-top: 20px;
+    display: none;
+}
+
+#mensagem_erro{
+    color: var(--color-primary);
+    font-size: 14px;
+}
+
 /* adaptacao para telas menores celulares */
 @media (max-width: 600px) {
     .form-grid {
