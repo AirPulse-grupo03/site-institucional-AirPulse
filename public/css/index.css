@@ -70,7 +70,7 @@
 
 .grade-pilares-beneficios {
      display: grid;
-   gap: 24px;
+   
   grid-template-columns: repeat(
      auto-fit,
      minmax(240px, 1fr)
@@ -83,7 +83,8 @@
     justify-content: flex-start;
     gap: 24px;
     padding: 55px 55px;
-    border-right: 2px solid var(--border-soft);
+    border-right: 2px solid var(--bg-soft);
+    border-top: 2px solid var(--bg-soft);
 }
 
 .icone-pilar-beneficios {
@@ -96,12 +97,6 @@
     justify-content: center;
     margin-bottom: 16px;
     color: var(--color-primary-dark);
-}
-
-/*nosso serviço ----------------------------------------------------------*/
-.secao-nosso-servico {
-    background-color: var(--bg-soft);
-    padding: 80px 120px;
 }
 
 /* LOGIN----------------------------------------------------------------- */
@@ -223,7 +218,7 @@
     color: var(--text-primary);
     line-height: 1.2;
     margin-bottom: 20px;
-    max-width: 450px;
+    max-width: 550px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -273,12 +268,12 @@
 
 
 .grade-pilares {
-margin-top: 1%;
+    margin-top: 1%;
     display: grid;
-   gap: 24px;
-  grid-template-columns: repeat(
-     auto-fit,
-     minmax(150px, 1fr)
+    gap: 24px;
+    grid-template-columns: repeat(
+    auto-fit,
+    minmax(150px, 1fr)
   );
 }
 
@@ -287,6 +282,10 @@ margin-top: 1%;
     width: 75%;
     border: 3px solid var(--color-primary);
 }
+
+ .diagrama-negocio-vertical {
+        display: none;
+    }
 
 .ajuste-diagrama-negocio {
     display: flex;
@@ -419,11 +418,10 @@ margin-top: 1%;
 }
 
 .grade-diferenciais {
-
     margin-top: 1%;
     display: grid;
-   gap: 24px;
-  grid-template-columns: repeat(
+    gap: 24px;
+    grid-template-columns: repeat(
      auto-fit,
      minmax(150px, 1fr)
   );
@@ -472,7 +470,7 @@ margin-top: 1%;
 
 .secao-cta {
     background-color: var(--bg-soft);
-    padding: 60px 120px;
+    padding: 40px 40px;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -480,11 +478,7 @@ margin-top: 1%;
 }
 
 .corpo-entre-contato {
-    
-
-  
-
-  display: flex;
+    display: flex;
     flex-direction: row;
     gap: 48px;
     align-items: flex-start;
@@ -512,10 +506,11 @@ margin-top: 1%;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 20px 60px rgba(26, 35, 126, 0.35);
-    width: 100%;            
+    width: 50%;            
     max-width: 800px;
     box-sizing: border-box;
-    padding: clamp(30px, 5vh, 60px) clamp(20px, 6vw, 80px);
+    padding: clamp(10px, 5vh, 60px) clamp(10px, 6vw, 80px);
+    margin-top: 50px;
 }
 
 .titulo-cta {
@@ -572,6 +567,7 @@ margin-top: 1%;
 }
 
 
+
 @media (max-width: 450px){
 #bannerIndex{
      background-image:none;
@@ -582,19 +578,83 @@ margin-top: 1%;
 }
 
 .titulos-principais{
-    font-size: 25px;
+    font-size: 20px;
+    
+}
+
+.cabecalhos-principais{
+    width: 100%;
 }
 
 .titulos-secundarios{
     font-size: 20px;
 }
+
+.subtitulo-bloco {
+    font-size: 20px;
 }
 
-@media (max-width: 1000px){
+.secao-nosso-servico { 
+    padding: 20px 20px;
+}
+
+.secao-como-funciona {
+    padding: 20px 20px;
+}
+
+.secao-sobre-nos {
+    padding: 20px 20px;
+}
+
+.secao-historia {
+    padding: 20px 20px;  
+}
+
+.secao-diferenciais {
+    padding: 20px 20px;
+}
+
+.secao-cta { 
+    padding: 20px 20px;  
+}
+
+.botao-cta-primario{
+    padding: 5px 5px;
+}
+
+.boxContato {
+   width: 100%;
+    padding: clamp(1px, 5vh, 60px) clamp(1px, 6vw, 80px);
+}
+
+.linha-rotulo {
+    display: none;
+}
+}
+
+
+@media (max-width: 1024px){
     .imagem-historia{
         display: none;
     }
+
+    .diagrama-negocio {
+        display: none;
+    }
+
+    .diagrama-negocio-vertical {
+        display: block;
+        width: 100%;
+        aspect-ratio: 3/9;
+    }
+
+    .boxContato {
+   width: 100%;
+    padding: clamp(1px, 5vh, 60px) clamp(1px, 6vw, 80px);
 }
+}
+
+
 
 @media (max-width: 1050px){
 .fluxoCadastro{
@@ -602,5 +662,12 @@ margin-top: 1%;
 }
 }
 
+
+
+@media (min-width: 730px) and (max-width: 1050px) {
+    .grade-pilares-beneficios {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
 
 
