@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/icon/AirPulse__2_-removebg-preview.png">
+    <link rel="icon" href="assets/AirPulse_Logo_Pack/Fundo transparente/02_Icone_Simbolo.png">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/cadastro_funcionario.css">
     <title>Cadastro de Funcionário</title>
 </head>
+
 <body>
     <!-- <div class="header">
         <img class="Logo" src="assets/icon/logo-airpulse.png" width="70px">
@@ -36,17 +38,17 @@
 
     <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
-      </div>
+    </div>
     <main class="container-cadastro">
         <div class="box-cadastro">
             <h1 class="titulo-cadastro">Cadastro de Funcionário</h1>
             <form class="form-cadastro">
+                <div class="input-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Nome completo">
+                </div>
                 <div class="form-grid">
-                    <div class="input-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" id="nome" placeholder="Nome completo">
-                    </div>
-                    
+
                     <div class="input-group">
                         <label for="email">Email Corporativo</label>
                         <input type="email" id="email" placeholder="nome@empresa.aero">
@@ -54,7 +56,7 @@
 
                     <div class="input-group">
                         <label for="data-nascimento">Data de Nascimento</label>
-                        <input type="text" id="data_nascimento" placeholder="DD/MM/AAAA">
+                        <input type="date" id="data_nascimento" placeholder="DD/MM/AAAA">
                     </div>
 
                     <div class="input-group">
@@ -69,102 +71,145 @@
 
                     <div class="input-group">
                         <label for="telefone">Telefone</label>
-                        <input type="text" id="telefone" placeholder="+55 11 9 0000-0000">
+                        <input type="text" id="telefone" placeholder="(11) 90000-0000">
                     </div>
 
-
+                    <div class="input-group">
+                        <label for="cargo">Cargo*</label>
+                        <select id="cargo" name="cargo" required class="select-cargo">
+                            <option value="">Selecione</option>
+                            <option>Administrador</option>
+                            <option>Gestor de operações</option>
+                            <option>Engenheiro de sistemas</option>
+                            <option>Analista de monitoramento</option>
+                            <option>Outro</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-actions">
-                    <button type="button" class="btn-voltar">Voltar</button>
-                    <button type="button" class="btn-proximo" onclick="cadastrar()">Próximo passo</button>
+                    <button type="button" class="btn-voltar" onclick="voltar()">Voltar</button>
+                    <button type="button" class="btn-proximo" onclick="cadastrar()">Cadastrar</button>
                 </div>
             </form>
         </div>
     </main>
 </body>
+
 </html>
 
 <script>
 
-function cadastrar() {
-    // aguardar();
+    function voltar() {
+        setTimeout(() => {
+            window.location = "index.html";
+        }, "2000");
+    }
 
-    //var idEmpresa = sessionStorage.getItem("empresa")
-    
-    var nomeVar = nome.value;
-    var emailVar = email.value;
-    var dtNascimentoVar = data_nascimento.value;
-    var cpfVar = cpf.value;
-    var senhaVar = senha.value;
-    var telefoneVar = telefone.value;
-    //var idEmpresaVar = idEmpresa;
-    
+    function cadastrar() {
 
-    // Verificando se há algum campo em branco
-    // if (
-    //   nomeVar == "" ||
-    //   emailVar == "" ||
-    //   dtNascimentoVar == "" ||
-    //   cpfVar == "" ||
-    //   senhaVar == "" ||
-    //   telefoneVar == "" ||
-    //   idEmpresaVar == ""
-    // ) {
-    //   cardErro.style.display = "block";
-    //   mensagem_erro.innerHTML =
-    //     "(Mensagem de erro para todos os campos em branco)";
+        //var idEmpresa = sessionStorage.getItem("empresa")
 
-    //   finalizarAguardar();
-    //   return false;
-    // } 
-    // else {
-    //   setInterval(sumirMensagem, 5000);
-    // }
+        document.querySelector('[type=date]').value = (data_nascimento.value).split('/').reverse().join('-');
 
-    // Enviando o valor da nova input
-    fetch("/cadastro_funcionario/cadastrar", {
-      method: "POST", 
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        dtNascimentoServer: dtNascimentoVar,
-        cpfServer: cpfVar,
-        senhaServer: senhaVar,
-        telefoneServer: telefoneVar
-        //idEmpresaServer: idEmpresaVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+        var nomeVar = nome.value;
+        var emailVar = email.value;
+        var dtNascimentoVar = data_nascimento.value;
+        var cpfVar = cpf.value;
+        var senhaVar = senha.value;
+        var telefoneVar = telefone.value;
+        var cargoVar = cargo.value
+        //var idEmpresaVar = idEmpresa;
 
-        if (resposta.ok) {
-          cardErro.style.display = "block";
+        // if (
+        //   nomeVar == "" ||
+        //   emailVar == "" ||
+        //   dtNascimentoVar == "" ||
+        //   cpfVar == "" ||
+        //   senhaVar == "" ||
+        //   telefoneVar == "" ||
+        //   idEmpresaVar == "" ||
+        //   cargoVar == ""
+        // ) {
+        //   cardErro.style.display = "block";
+        //   mensagem_erro.innerHTML =
+        //     "(Mensagem de erro para todos os campos em branco)";
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        //   finalizarAguardar();
+        //   return false;
+        // } 
+        // else {
+        //   setInterval(sumirMensagem, 5000);
+        // }
 
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
+        fetch("/cadastro_funcionario/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                dtNascimentoServer: dtNascimentoVar,
+                cpfServer: cpfVar,
+                senhaServer: senhaVar,
+                telefoneServer: telefoneVar,
+                cargoServer: cargoVar
+                //idEmpresaServer: idEmpresaVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-          // limparFormulario();
-          // finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        //finalizarAguardar();
-      });
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
 
-    return false;
-  }
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                //finalizarAguardar();
+            });
+
+        return false;
+    }
+
+//     function aplicarMascara(id, mascara) {
+//   const campo = document.querySelector(`#${id}`);
+
+//   campo.addEventListener("input", () => {
+//     campo.value = mascara(campo.value);
+//   });
+// }
+
+/* Máscara de CPF */
+// aplicarMascara("cpf", valor => {
+//   return valor
+//     .replace(/\D/g, "")
+//     .slice(0, 11)
+//     .replace(/^(\d{3})(\d)/, "$1.$2")
+//     .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+//     .replace(/\.(\d{3})(\d)/, ".$1-$2");
+// });
+
+// /* Máscara de telefone */
+// aplicarMascara("telefone", valor => {
+//   return valor
+//     .replace(/\D/g, "")
+//     .slice(0, 11)
+//     .replace(/^(\d{2})(\d)/, "($1) $2")
+//     .replace(/(\d{5})(\d)/, "$1-$2");
+// });
 
 </script>
