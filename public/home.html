@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/global.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+
+    <div class="container-menu">
+        <div id="posicao-logo">
+            <img src="assets/AirPulse_Logo_Pack/Fundo transparente/07_Principal_Branco.svg" width="78%" id="logoGrande">
+            <img src="assets/AirPulse_Logo_Pack/Fundo transparente/10_Icone_Branco.svg" width="75%" id="logoPequena">
+        </div>
+
+        <div class="nav-home">
+            <div class="box-cadastros">
+
+                <div class="nav-text" id="botaoEstatico">CADASTRO</div>
+                <button onclick="botaoAbre()" class="botoesDinamicos" id="botao-abre">CADASTRO</button>
+                <button onclick="botaoFecha()" class="botoesDinamicos" id="botao-fecha">CADASTRO</button>
+
+
+                <div class="opcoes-cadastros">
+                    <a href="cadastro_funcionario.html" class="opcoes" id="funcionario"><img src="assets/icon/setaDireita.svg" width="10%" >         Funcionário</a>
+                    <a href="cadastro_empresa.html" class="opcoes" id="empresa"><img src="assets/icon/setaDireita.svg" width="10%">         Empresa</a>
+                    <a href="" class="opcoes" id="componentes"><img src="assets/icon/setaDireita.svg" width="10%">         Componentes</a>
+                </div>
+            </div>
+            <a href="" class="nav-text">DASHBOARD</a>
+        </div>
+        <div class="boxLogout">
+            <button onclick="limparSessao()" class="btnLogout">Sair <img src="assets/icon/logout.svg" width="20%"></button>
+        </div>
+    </div>
+    <div class="corpo">
+        <div class="saudacoes">Seja bem vindo(a), <span id="b_usuario"></span></div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    permissoes = sessionStorage.adm;
+    email = sessionStorage.email;
+    acesso_cadastro_funcionario = funcionario;
+    acesso_cadastro_empresa = empresa;
+    acesso_cadastro_componentes = componentes;
+
+    if(permissoes == 1){
+        funcionario.style.display = "block"
+        componentes.style.display = "block"
+    } else if (email.includes("@airpulse.com")){
+        empresa.style.display = "block"
+    }
+
+   function botaoAbre(){
+
+   }
+
+   function botaoFecga(){
+
+   }
+
+</script>

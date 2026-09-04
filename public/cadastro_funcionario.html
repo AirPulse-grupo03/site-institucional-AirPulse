@@ -111,7 +111,27 @@
         //var idEmpresa = sessionStorage.getItem("empresa")
 
         document.querySelector('[type=date]').value = (data_nascimento.value).split('/').reverse().join('-');
-
+        
+        function limparCpf(cpf){
+            return cpf.replace(/\D/g, "");
+        }
+        
+        function validarCpf(cpf){
+            const cpfLimpo = limparCpf(cpf);
+        
+            return cpfLimpo.length === 1;
+        }
+        
+        function limparTelefone(telefone){
+            return telefone.replace(/\D/g, "");
+        }
+        
+        function validarTelefone(telefone){
+            const telefoneLimpo = limparTelefone(cpf);
+        
+            return telefoneLimpo.length === 1;
+        }
+        
         var nomeVar = nome.value;
         var emailVar = email.value;
         var dtNascimentoVar = data_nascimento.value;
@@ -185,31 +205,32 @@
         return false;
     }
 
-//     function aplicarMascara(id, mascara) {
-//   const campo = document.querySelector(`#${id}`);
+     function aplicarMascara(id, mascara) {
+   const campo = document.querySelector(`#${id}`);
 
-//   campo.addEventListener("input", () => {
-//     campo.value = mascara(campo.value);
-//   });
-// }
+   campo.addEventListener("input", () => {
+     campo.value = mascara(campo.value);
+   });
+ }
 
 /* Máscara de CPF */
-// aplicarMascara("cpf", valor => {
-//   return valor
-//     .replace(/\D/g, "")
-//     .slice(0, 11)
-//     .replace(/^(\d{3})(\d)/, "$1.$2")
-//     .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
-//     .replace(/\.(\d{3})(\d)/, ".$1-$2");
-// });
+ aplicarMascara("cpf", valor => {
+   return valor
+     .replace(/\D/g, "")
+     .slice(0, 11)
+     .replace(/^(\d{3})(\d)/, "$1.$2")
+     .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+     .replace(/\.(\d{3})(\d)/, ".$1-$2");
+ });
 
-// /* Máscara de telefone */
-// aplicarMascara("telefone", valor => {
-//   return valor
-//     .replace(/\D/g, "")
-//     .slice(0, 11)
-//     .replace(/^(\d{2})(\d)/, "($1) $2")
-//     .replace(/(\d{5})(\d)/, "$1-$2");
-// });
+ /* Máscara de telefone */
+ aplicarMascara("telefone", valor => {
+   return valor
+     .replace(/\D/g, "")
+     .slice(0, 11)
+     .replace(/^(\d{2})(\d)/, "($1) $2")
+     .replace(/(\d{5})(\d)/, "$1-$2");
+ });
+
 
 </script>
