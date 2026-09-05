@@ -64,16 +64,12 @@
                         <input type="text" id="cpf" placeholder="000.000.000-00">
                     </div>
 
-                    <div class="input-group">
-                        <label for="senha">Senha</label>
-                        <input type="password" id="senha" placeholder="Mínimo 8 caracteres">
-                    </div>
-
+                    
                     <div class="input-group">
                         <label for="telefone">Telefone</label>
                         <input type="text" id="telefone" placeholder="(11) 90000-0000">
                     </div>
-
+                    
                     <div class="input-group">
                         <label for="cargo">Cargo*</label>
                         <select id="cargo" name="cargo" required class="select-cargo">
@@ -84,6 +80,10 @@
                             <option>Analista de monitoramento</option>
                             <option>Outro</option>
                         </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="Mínimo 8 caracteres">
                     </div>
                 </div>
 
@@ -110,15 +110,13 @@
 
         //var idEmpresa = sessionStorage.getItem("empresa")
 
-        document.querySelector('[type=date]').value = (data_nascimento.value).split('/').reverse().join('-');
-
         var nomeVar = nome.value;
         var emailVar = email.value;
         var dtNascimentoVar = data_nascimento.value;
-        var cpfVar = cpf.value;
-        var senhaVar = senha.value;
-        var telefoneVar = telefone.value;
+        var cpfVar = limparCpf(cpf.value);
+        var telefoneVar = limparTelefone(telefone.value);
         var cargoVar = cargo.value
+        var senhaVar = senha.value;
         //var idEmpresaVar = idEmpresa;
 
         // if (
@@ -185,31 +183,48 @@
         return false;
     }
 
-//     function aplicarMascara(id, mascara) {
-//   const campo = document.querySelector(`#${id}`);
+     function aplicarMascara(id, mascara) {
+   const campo = document.querySelector(`#${id}`);
 
-//   campo.addEventListener("input", () => {
-//     campo.value = mascara(campo.value);
-//   });
-// }
+   campo.addEventListener("input", () => {
+     campo.value = mascara(campo.value);
+   });
+ }
 
 /* Máscara de CPF */
-// aplicarMascara("cpf", valor => {
-//   return valor
-//     .replace(/\D/g, "")
-//     .slice(0, 11)
-//     .replace(/^(\d{3})(\d)/, "$1.$2")
-//     .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
-//     .replace(/\.(\d{3})(\d)/, ".$1-$2");
-// });
+ aplicarMascara("cpf", valor => {
+   return valor
+     .replace(/\D/g, "")
+     .slice(0, 11)
+     .replace(/^(\d{3})(\d)/, "$1.$2")
+     .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+     .replace(/\.(\d{3})(\d)/, ".$1-$2");
+ });
 
-// /* Máscara de telefone */
-// aplicarMascara("telefone", valor => {
-//   return valor
-//     .replace(/\D/g, "")
-//     .slice(0, 11)
-//     .replace(/^(\d{2})(\d)/, "($1) $2")
-//     .replace(/(\d{5})(\d)/, "$1-$2");
-// });
+ /* Máscara de telefone */
+ aplicarMascara("telefone", valor => {
+   return valor
+     .replace(/\D/g, "")
+     .slice(0, 11)
+     .replace(/^(\d{2})(\d)/, "($1) $2")
+     .replace(/(\d{5})(\d)/, "$1-$2");
+});
 
+function limparCpf(cpf){
+    return cpf.replace(/\D/g, "");
+}
+
+function validarCpf(cpf){
+    const cpfLimpo = limparCpf(cpf);
+    return cpfLimpo.length === 11
+}
+
+function limparTelefone(telefone){
+    return telefone.replace(/\D/g, "");
+}
+
+function validarTelefone(telefone){
+    const telefoneLimpo = limparTelefone(telefone);
+    return telefoneLimpo.length === 11
+}
 </script>
