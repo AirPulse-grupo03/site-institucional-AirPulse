@@ -119,26 +119,26 @@
         var senhaVar = senha.value;
         //var idEmpresaVar = idEmpresa;
 
-        // if (
-        //   nomeVar == "" ||
-        //   emailVar == "" ||
-        //   dtNascimentoVar == "" ||
-        //   cpfVar == "" ||
-        //   senhaVar == "" ||
-        //   telefoneVar == "" ||
-        //   idEmpresaVar == "" ||
-        //   cargoVar == ""
-        // ) {
-        //   cardErro.style.display = "block";
-        //   mensagem_erro.innerHTML =
-        //     "(Mensagem de erro para todos os campos em branco)";
+        if (
+          nomeVar == "" ||
+          emailVar == "" ||
+          dtNascimentoVar == "" ||
+          cpfVar == "" ||
+          senhaVar == "" ||
+          telefoneVar == "" ||
+          idEmpresaVar == "" ||
+          cargoVar == ""
+        ) {
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML =
+            "(Mensagem de erro para todos os campos em branco)";
 
-        //   finalizarAguardar();
-        //   return false;
-        // } 
-        // else {
-        //   setInterval(sumirMensagem, 5000);
-        // }
+          finalizarAguardar();
+          return false;
+        } 
+        else {
+          setInterval(sumirMensagem, 5000);
+        }
 
         fetch("/cadastro_funcionario/cadastrar", {
             method: "POST",
