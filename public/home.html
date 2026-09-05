@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="icon" href="assets/AirPulse_Logo_Pack/Fundo transparente/08_Icone_Azul_Profundo.png">
     <title>Home</title>
 </head>
 
@@ -19,24 +20,32 @@
         </div>
 
         <div class="nav-home">
-            <div class="box-cadastros">
+            <div class="box-cadastros" class="box-cadastros">
 
                 <div class="nav-text" id="botaoEstatico">CADASTRO</div>
-                <button onclick="botaoAbre()" class="botoesDinamicos" id="botao-abre">CADASTRO</button>
-                <button onclick="botaoFecha()" class="botoesDinamicos" id="botao-fecha">CADASTRO</button>
+                <button onclick="botaoAbre()" class="botoesDinamicos" id="botao-abre">CADASTRO <img
+                        src="assets/icon/setaDireita.svg" width="8%"></button>
+                <button onclick="botaoFecha()" class="botoesDinamicos" id="botao-fecha">CADASTRO <img
+                        src="assets/icon/setaBaixo.svg" width="6%"></button>
 
 
-                <div class="opcoes-cadastros">
-                    <a href="cadastro_funcionario.html" class="opcoes" id="funcionario"><img src="assets/icon/setaDireita.svg" width="10%" >         Funcionário</a>
-                    <a href="cadastro_empresa.html" class="opcoes" id="empresa"><img src="assets/icon/setaDireita.svg" width="10%">         Empresa</a>
-                    <a href="" class="opcoes" id="componentes"><img src="assets/icon/setaDireita.svg" width="10%">         Componentes</a>
+                <div class="opcoes-cadastros" id="opcoes_cadastros">
+                    <a href="cadastro_funcionario.html" class="opcoes" id="funcionario"><img
+                            src="assets/icon/setaDireita.svg" width="10%"> Funcionário</a>
+                    <a href="cadastro_empresa.html" class="opcoes" id="empresa"><img src="assets/icon/setaDireita.svg"
+                            width="10%"> Empresa</a>
+                    <a href="" class="opcoes" id="componentes"><img src="assets/icon/setaDireita.svg" width="10%">
+                        Componentes</a>
                 </div>
             </div>
             <a href="" class="nav-text">DASHBOARD</a>
         </div>
-        <div class="boxLogout">
-            <button onclick="limparSessao()" class="btnLogout">Sair <img src="assets/icon/logout.svg" width="20%"></button>
-        </div>
+        <a href="">
+            <div class="boxLogout" onclick="limparSessao()">
+                <div class="btnLogout">Sair </div>
+                <img src="assets/icon/logout.svg" id="imgLogout">
+            </div>
+        </a>
     </div>
     <div class="corpo">
         <div class="saudacoes">Seja bem vindo(a), <span id="b_usuario"></span></div>
@@ -49,23 +58,41 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     permissoes = sessionStorage.adm;
     email = sessionStorage.email;
-    acesso_cadastro_funcionario = funcionario;
-    acesso_cadastro_empresa = empresa;
-    acesso_cadastro_componentes = componentes;
+    opcoes_cadastro_funcionario = document.getElementById("opcoes_cadastros");
+    acesso_cadastro_funcionario = document.getElementById("funcionario");
+    acesso_cadastro_empresa = document.getElementById("empresa");
+    acesso_cadastro_componentes = document.getElementById("componentes");
+    botao_abre = document.getElementById("botao-abre");
+    botao_fecha = document.getElementById("botao-fecha");
+    box_cadastros = document.getElementById("box-cadastros");
 
-    if(permissoes == 1){
+
+
+
+    function botaoAbre() {
+        opcoes_cadastros.style.display = "block"
         funcionario.style.display = "block"
         componentes.style.display = "block"
-    } else if (email.includes("@airpulse.com")){
         empresa.style.display = "block"
+        botao_abre.style.display = "none"
+        botao_fecha.style.display = "block"
+        //      if(permissoes == 1){
+        //     funcionario.style.display = "block"
+        //     componentes.style.display = "block"
+        // } else if (email.includes("@airpulse.com")){
+        //     empresa.style.display = "block"
+        // } else{
+        //      box_cadastros.style.display = "none" 
+        //}
     }
 
-   function botaoAbre(){
-
-   }
-
-   function botaoFecga(){
-
-   }
+    function botaoFecha() {
+        opcoes_cadastros.style.display = "none "
+        funcionario.style.display = "none"
+        componentes.style.display = "none"
+        empresa.style.display = "none"
+        botao_abre.style.display = "block"
+        botao_fecha.style.display = "none"
+    }
 
 </script>
