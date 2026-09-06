@@ -5,6 +5,17 @@ const passwordInput = document.getElementById("passwordInput");
 const keepConnectedCheckbox = document.getElementById("keepConnectedCheckbox");
 const loginSubmitButton = document.getElementById("loginSubmitButton");
 
+// Limpa erros ao digitar
+emailInput.addEventListener('input', () => {
+    document.getElementById('emailError').style.display = 'none';
+    emailInput.classList.remove('input-error');
+});
+
+passwordInput.addEventListener('input', () => {
+    document.getElementById('passwordError').style.display = 'none';
+    passwordInput.classList.remove('input-error');
+});
+
 // adiciona um ouvinte de evento para quando o formulario for enviado
 loginForm.addEventListener('submit', (event) => {
     // previne o comportamento padrao de recarregar a pagina
@@ -15,13 +26,31 @@ loginForm.addEventListener('submit', (event) => {
 
 // funcao responsavel por fazer a logica de login
 function handleLogin() {
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    
+    // Reseta as mensagens de erro
+    emailError.style.display = "none";
+    passwordError.style.display = "none";
+    emailInput.classList.remove("input-error");
+    passwordInput.classList.remove("input-error");
+
     // pega os valores digitados e remove os espacos vazios do email
     const email = emailInput.value.trim();
     const password = passwordInput.value;
 
     // verifica se os campos estao vazios
     if (!email || !password) {
-        alert("por favor, preencha todos os campos.");
+        if (!email) {
+            emailError.innerText = "Preencha este campo.";
+            emailError.style.display = "block";
+            emailInput.classList.add("input-error");
+        }
+        if (!password) {
+            passwordError.innerText = "Preencha este campo.";
+            passwordError.style.display = "block";
+            passwordInput.classList.add("input-error");
+        }
         return;
     }
 
@@ -62,7 +91,11 @@ function handleLogin() {
             console.log("houve um erro ao tentar realizar o login!");
             resposta.text().then(texto => {
                 console.error(texto);
-                alert("e-mail ou senha invalidos!");
+                const passwordError = document.getElementById("passwordError");
+                passwordError.innerText = "E-mail ou senha inválidos!";
+                passwordError.style.display = "block";
+                passwordInput.classList.add("input-error");
+                emailInput.classList.add("input-error");
 
                 // volta o botao ao normal em caso de erro
                 loginSubmitButton.disabled = false;
@@ -71,7 +104,9 @@ function handleLogin() {
         }
     }).catch(function (erro) {
         console.log(erro);
-        alert("erro inesperado ao conectar com o servidor.");
+        const passwordError = document.getElementById("passwordError");
+        passwordError.innerText = "Erro inesperado ao conectar com o servidor.";
+        passwordError.style.display = "block";
 
         // volta o botao ao normal em caso de erro
         loginSubmitButton.disabled = false;
