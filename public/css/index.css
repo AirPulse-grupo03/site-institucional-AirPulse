@@ -470,19 +470,47 @@
 
 .secao-cta {
     background-color: var(--bg-soft);
-    padding: 60px 120px;
+    padding: 40px 40px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items:center;
+    
 }
 
-.caixa-cta {
+.corpo-entre-contato {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+.imagem-fluxo-cadastro{
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 2/2;
+    width: 100%;
+}
+
+.fluxoCadastro {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.boxContato {
+    display: flex;
+    flex-direction: column;
+    align-items:center; 
     background: var(--gradient-brand);
     border-radius: 20px;
-    padding: 60px 80px;
     text-align: center;
-    width: 100%;
-    max-width: 860px;
     box-shadow: 0 20px 60px rgba(26, 35, 126, 0.35);
+    width: 50%;            
+    max-width: 800px;
+    box-sizing: border-box;
+    padding: clamp(10px, 5vh, 60px) clamp(10px, 6vw, 80px);
+    margin-top: 50px;
 }
 
 .titulo-cta {
@@ -494,234 +522,119 @@
     line-height: 1.3;
 }
 
+.item-contato {
+    display: flex;
+    flex-direction: row;
+    align-items: center;       
+    justify-content: center;    
+    gap: 15px;                 
+    margin-bottom: 20px; 
+    } 
+    
+    .rotulo-contato {
+    font-size: 14px;
+    color: var(--text-on-dark-secondary);
+    margin: 0;                  
+    white-space: nowrap;       
+}
+
 .descricao-cta {
     font-size: 14px;
     color: var(--text-on-dark-secondary);
-    margin-bottom: 36px;
+    margin-bottom: 80px;
     line-height: 1.7;
     max-width: 540px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.botoes-cta {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    justify-content: center;
-}
-
 .botao-cta-primario {
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    color: var(--color-white);
+    color: var(--color-primary);
     border: 2px solid var(--color-white);
     border-radius: 8px;
     padding: 12px 28px;
+    
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+    transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .botao-cta-primario:hover {
-    background-color: var(--color-white);
-    color: var(--color-primary-dark);
-}
-
-.botao-cta-secundario {
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-white);
-    background-color: var(--color-primary);
-    border-radius: 8px;
-    padding: 12px 28px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.botao-cta-secundario:hover {
-    background-color: var(--color-primary-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(223, 221, 245, 0.206);
 }
 
 
-/* Seção Fale Conosco (antiga página fale_conosco, trazida pra home) */
-.secao-fale-conosco {
-    background-color: var(--bg-surface);
-    padding: 80px 120px;
+
+@media (max-width: 450px){
+#bannerIndex{
+     background-image:none;
 }
 
-.conteudo-fale-conosco {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 60px;
+#slogan{
+     font-size: 25px;
 }
 
-.fluxo-cadastro-home {
-    flex: 1;
+.titulos-principais{
+    font-size: 20px;
+    
 }
 
-.titulo-fluxo-home {
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.imagem-fluxo-cadastro {
+.cabecalhos-principais{
     width: 100%;
-    height: auto;
-    border-radius: 12px;
 }
 
-.caixa-fale-conosco {
-    flex: 1;
-    background: var(--gradient-brand);
-    border-radius: 20px;
-    padding: 48px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    box-shadow: 0 20px 60px rgba(26, 35, 126, 0.25);
+.titulos-secundarios{
+    font-size: 20px;
 }
 
-.cabecalho-caixa-fale-conosco {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+.subtitulo-bloco {
+    font-size: 20px;
 }
 
-.titulo-caixa-fale-conosco {
-    font-family: var(--font-heading);
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--color-white);
-    margin: 0;
+.secao-nosso-servico { 
+    padding: 20px 20px;
 }
 
-.descricao-caixa-fale-conosco {
-    font-size: 14px;
-    color: var(--text-on-dark-secondary);
-    line-height: 1.7;
-    max-width: 340px;
+.secao-como-funciona {
+    padding: 20px 20px;
 }
 
-.botoes-fale-conosco {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    max-width: 320px;
+.secao-sobre-nos {
+    padding: 20px 20px;
 }
 
-.botao-fale-conosco {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background-color: var(--color-white);
-    color: var(--color-primary-dark);
-    border-radius: 20px;
-    padding: 14px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+.secao-historia {
+    padding: 20px 20px;  
 }
 
-.botao-fale-conosco:hover {
-    background-color: var(--color-primary-soft);
-    transform: translateY(-2px);
+.secao-diferenciais {
+    padding: 20px 20px;
+}
+
+.secao-cta { 
+    padding: 20px 20px;  
+}
+
+.botao-cta-primario{
+    padding: 5px 5px;
+}
+
+.boxContato {
+   width: 100%;
+    padding: clamp(1px, 5vh, 60px) clamp(1px, 6vw, 80px);
+}
+
+.linha-rotulo {
+    display: none;
+}
 }
 
 
-/* Responsivo (breakpoints do time) ----------------------------------- */
-
-@media (max-width: 900px) {
-    .conteudo-fale-conosco {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 450px) {
-    #bannerIndex {
-        background-image: none;
-    }
-
-    #slogan {
-        font-size: 25px;
-    }
-
-    .titulos-principais {
-        font-size: 20px;
-    }
-
-    .cabecalhos-principais {
-        width: 100%;
-    }
-
-    .titulos-secundarios {
-        font-size: 20px;
-    }
-
-    .subtitulo-bloco {
-        font-size: 20px;
-    }
-
-    .secao-nosso-servico {
-        padding: 20px 20px;
-    }
-
-    .secao-como-funciona {
-        padding: 20px 20px;
-    }
-
-    .secao-sobre-nos {
-        padding: 20px 20px;
-    }
-
-    .secao-historia {
-        padding: 20px 20px;
-    }
-
-    .secao-diferenciais {
-        padding: 20px 20px;
-    }
-
-    .secao-cta {
-        padding: 20px 20px;
-    }
-
-    .caixa-cta {
-        padding: 32px 20px;
-    }
-
-    .botao-cta-primario {
-        padding: 5px 5px;
-    }
-
-    .secao-fale-conosco {
-        padding: 20px 20px;
-    }
-
-    .caixa-fale-conosco {
-        width: 100%;
-        padding: clamp(1px, 5vh, 60px) clamp(1px, 6vw, 80px);
-    }
-
-    .linha-rotulo {
-        display: none;
-    }
-}
-
-
-@media (max-width: 1024px) {
-    .imagem-historia {
+@media (max-width: 1024px){
+    .imagem-historia{
         display: none;
     }
 
@@ -734,18 +647,27 @@
         width: 100%;
         aspect-ratio: 3/9;
     }
+
+    .boxContato {
+   width: 100%;
+    padding: clamp(1px, 5vh, 60px) clamp(1px, 6vw, 80px);
+}
 }
 
 
-@media (max-width: 1050px) {
-    .fluxo-cadastro-home {
-        display: none;
-    }
+
+@media (max-width: 1050px){
+.fluxoCadastro{
+    display: none;
 }
+}
+
 
 
 @media (min-width: 730px) and (max-width: 1050px) {
     .grade-pilares-beneficios {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
+
+
