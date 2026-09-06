@@ -69,8 +69,12 @@
 /*Beneficios ----------------------------------------------------------- */
 
 .grade-pilares-beneficios {
-    display: flex;
-    flex-direction: row;
+     display: grid;
+   
+  grid-template-columns: repeat(
+     auto-fit,
+     minmax(240px, 1fr)
+  );
 }
 
 .posicao-grade-beneficios {
@@ -79,7 +83,8 @@
     justify-content: flex-start;
     gap: 24px;
     padding: 55px 55px;
-    border-right: 2px solid var(--border-soft);
+    border-right: 2px solid var(--bg-soft);
+    border-top: 2px solid var(--bg-soft);
 }
 
 .icone-pilar-beneficios {
@@ -92,19 +97,6 @@
     justify-content: center;
     margin-bottom: 16px;
     color: var(--color-primary-dark);
-}
-
-.icone-pilar-beneficios:hover  {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    transition: background-color 0.25s, color 0.25s;
-}
-
-
-/*nosso serviço ----------------------------------------------------------*/
-.secao-nosso-servico {
-    background-color: var(--bg-soft);
-    padding: 80px 120px;
 }
 
 /* LOGIN----------------------------------------------------------------- */
@@ -160,12 +152,17 @@
 
 /* scroll-behavior: smooth já definido globalmente em global.css */
 
-.secoes-principais {
-    background-color: var(--bg-surface);
+.secao-nosso-servico {
+    background-color: var(--bg-soft);
     padding: 80px 120px;
 }
 
 .secao-como-funciona {
+    background-color: white;
+    padding: 80px 120px;
+}
+
+.secao-sobre-nos {
     background-color: var(--bg-soft);
     padding: 80px 120px;
 }
@@ -191,7 +188,10 @@
     font-weight: 600;
     letter-spacing: 3px;
     color: var(--color-primary);
+    /*impede de quebrar o texto*/
+    white-space: nowrap;
 }
+
 
 /* Cabeçalhos e subtitulos ----------------------------------------------- */
 .cabecalhos-principais {
@@ -216,13 +216,24 @@
     font-size: 36px;
     font-weight: 800;
     color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulos-principais-contato {
+    font-family: var(--font-heading);
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--color-primary);
     line-height: 1.25;
     margin-bottom: 20px;
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
 }
-
 .destaque-azul {
     color: var(--color-primary);
 }
@@ -257,21 +268,35 @@
 
 
 .grade-pilares {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
     margin-top: 1%;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(
+    auto-fit,
+    minmax(150px, 1fr)
+  );
 }
 
 .diagrama-negocio {
-    height: 50%;
-    width: 100%;
+    height: 10%;
+    width: 75%;
     border: 3px solid var(--color-primary);
 }
 
+ .diagrama-negocio-vertical {
+        display: none;
+    }
+
+.ajuste-diagrama-negocio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
 .cartao-pilar {
     flex: 1;
-    background-color: var(--bg-soft);
+    background-color: white;
     border: 1px solid var(--border-soft);
     border-radius: 12px;
     padding: 28px 24px;
@@ -357,32 +382,7 @@
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 24px;
-}
-
-.linha-do-tempo {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.evento-timeline {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.55;
-}
-
-.marcador-timeline {
-    display: block;
-    width: 10px;
-    height: 10px;
-    min-width: 10px;
-    border-radius: 50%;
-    background-color: var(--color-primary);
-    margin-top: 4px;
+    text-align: justify;
 }
 
 
@@ -418,9 +418,13 @@
 }
 
 .grade-diferenciais {
-    display: flex;
-    flex-direction: row;
+    margin-top: 1%;
+    display: grid;
     gap: 24px;
+    grid-template-columns: repeat(
+     auto-fit,
+     minmax(150px, 1fr)
+  );
 }
 
 .cartao-diferencial {
@@ -435,12 +439,6 @@
 .cartao-diferencial:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 28px rgba(79, 70, 229, 0.15);
-}
-
-.cartao-diferencial:hover .icone-diferencial {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    transition: background-color 0.25s, color 0.25s;
 }
 
 .icone-diferencial {
@@ -509,8 +507,8 @@
 .botoes-cta {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     gap: 16px;
+    justify-content: center;
 }
 
 .botao-cta-primario {
@@ -641,8 +639,113 @@
     transform: translateY(-2px);
 }
 
+
+/* Responsivo (breakpoints do time) ----------------------------------- */
+
 @media (max-width: 900px) {
     .conteudo-fale-conosco {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    #bannerIndex {
+        background-image: none;
+    }
+
+    #slogan {
+        font-size: 25px;
+    }
+
+    .titulos-principais {
+        font-size: 20px;
+    }
+
+    .cabecalhos-principais {
+        width: 100%;
+    }
+
+    .titulos-secundarios {
+        font-size: 20px;
+    }
+
+    .subtitulo-bloco {
+        font-size: 20px;
+    }
+
+    .secao-nosso-servico {
+        padding: 20px 20px;
+    }
+
+    .secao-como-funciona {
+        padding: 20px 20px;
+    }
+
+    .secao-sobre-nos {
+        padding: 20px 20px;
+    }
+
+    .secao-historia {
+        padding: 20px 20px;
+    }
+
+    .secao-diferenciais {
+        padding: 20px 20px;
+    }
+
+    .secao-cta {
+        padding: 20px 20px;
+    }
+
+    .caixa-cta {
+        padding: 32px 20px;
+    }
+
+    .botao-cta-primario {
+        padding: 5px 5px;
+    }
+
+    .secao-fale-conosco {
+        padding: 20px 20px;
+    }
+
+    .caixa-fale-conosco {
+        width: 100%;
+        padding: clamp(1px, 5vh, 60px) clamp(1px, 6vw, 80px);
+    }
+
+    .linha-rotulo {
+        display: none;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .imagem-historia {
+        display: none;
+    }
+
+    .diagrama-negocio {
+        display: none;
+    }
+
+    .diagrama-negocio-vertical {
+        display: block;
+        width: 100%;
+        aspect-ratio: 3/9;
+    }
+}
+
+
+@media (max-width: 1050px) {
+    .fluxo-cadastro-home {
+        display: none;
+    }
+}
+
+
+@media (min-width: 730px) and (max-width: 1050px) {
+    .grade-pilares-beneficios {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
