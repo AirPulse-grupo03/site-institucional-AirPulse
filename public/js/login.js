@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', (event) => {
 function handleLogin() {
     const emailError = document.getElementById("emailError");
     const passwordError = document.getElementById("passwordError");
-    
+
     // Reseta as mensagens de erro
     emailError.style.display = "none";
     passwordError.style.display = "none";
@@ -53,9 +53,28 @@ function handleLogin() {
     loginSubmitButton.innerText = "ENTRANDO..."
 
     // Aqui entra a chamada pra API de autenticação
-    setTimeout(() => {
-        if (keepConnectedCheckbox.checked) {
-            localStorage.EMAIL_USUARIO = email
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: email,
+            senhaServer: password
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                if (keepConnectedCheckbox.checked) {
+                    localStorage.EMAIL_USUARIO = json.email;
+                }
+
+                window.location.href = "../dashboard.html";
+            });
         } else {
             console.log("houve um erro ao tentar realizar o login!");
             resposta.text().then(texto => {
@@ -77,6 +96,7 @@ function handleLogin() {
         passwordError.innerText = "Erro inesperado ao conectar com o servidor.";
         passwordError.style.display = "block";
 
-        window.location.href = "../index.html"
-    }, 800)
+        loginSubmitButton.disabled = false;
+        loginSubmitButton.innerText = "entrar na plataforma";
+    });
 }
