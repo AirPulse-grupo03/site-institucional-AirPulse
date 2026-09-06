@@ -545,3 +545,104 @@
 .botao-cta-secundario:hover {
     background-color: var(--color-primary-dark);
 }
+
+
+/* Seção Fale Conosco (antiga página fale_conosco, trazida pra home) */
+.secao-fale-conosco {
+    background-color: var(--bg-surface);
+    padding: 80px 120px;
+}
+
+.conteudo-fale-conosco {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+}
+
+.fluxo-cadastro-home {
+    flex: 1;
+}
+
+.titulo-fluxo-home {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.imagem-fluxo-cadastro {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.caixa-fale-conosco {
+    flex: 1;
+    background: var(--gradient-brand);
+    border-radius: 20px;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    box-shadow: 0 20px 60px rgba(26, 35, 126, 0.25);
+}
+
+.cabecalho-caixa-fale-conosco {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.titulo-caixa-fale-conosco {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--color-white);
+    margin: 0;
+}
+
+.descricao-caixa-fale-conosco {
+    font-size: 14px;
+    color: var(--text-on-dark-secondary);
+    line-height: 1.7;
+    max-width: 340px;
+}
+
+.botoes-fale-conosco {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.botao-fale-conosco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: var(--color-white);
+    color: var(--color-primary-dark);
+    border-radius: 20px;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.botao-fale-conosco:hover {
+    background-color: var(--color-primary-soft);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .conteudo-fale-conosco {
+        flex-direction: column;
+    }
+}

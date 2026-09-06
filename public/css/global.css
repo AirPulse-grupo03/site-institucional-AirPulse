@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
 
-/*
-==========================================================================
-    IDENTIDADE VISUAL AIRPULSE (Conceito A — Pulse Flight)
-    Fonte única das cores e tipografia da marca. Todos os outros CSS do
-    projeto devem referenciar estas variáveis em vez de cores fixas.
-==========================================================================
-*/
+/* ==========================================================================
+   IDENTIDADE VISUAL AIRPULSE (Conceito A — Pulse Flight)
+   Fonte única das cores e tipografia da marca. Todos os outros CSS do
+   projeto devem referenciar estas variáveis em vez de cores fixas.
+   ========================================================================== */
 :root {
     /* Cores de marca */
     --color-primary: #4F46E5;
@@ -141,14 +139,14 @@ html {
 
 
 
-/*Footer----------------------------------------------------*/
-.footer {
+/*Rodapé----------------------------------------------------*/
+.rodape {
     background-color: var(--color-primary-dark);
     color: var(--color-white);
     padding: 64px 120px 0;
 }
 
-.conteudo-footer {
+.conteudo-rodape {
     display: flex;
     flex-direction: row;
     gap: 60px;
@@ -163,33 +161,33 @@ html {
     gap: 14px;
 }
 
-.nome-marca-footer {
+.nome-marca-rodape {
     font-family: var(--font-heading);
     font-size: 22px;
     font-weight: 800;
     color: var(--color-white);
 }
 
-.descricao-marca-footer {
+.descricao-marca-rodape {
     font-size: 13px;
     color: var(--text-on-dark-secondary);
     line-height: 1.65;
     max-width: 220px;
 }
 
-.localizacao-footer {
+.localizacao-rodape {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.55);
 }
 
-.coluna-links-footer {
+.coluna-links-rodape {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.titulo-coluna-footer {
+.titulo-coluna-rodape {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -197,18 +195,18 @@ html {
     margin-bottom: 4px;
 }
 
-.link-footer {
+.link-rodape {
     text-decoration: none;
     font-size: 13px;
     color: rgba(255, 255, 255, 0.75);
     transition: color 0.2s;
 }
 
-.link-footer:hover {
+.link-rodape:hover {
     color: var(--color-white);
 }
 
-.barra-inferior-footer {
+.barra-inferior-rodape {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -221,7 +219,7 @@ html {
     color: rgba(255, 255, 255, 0.55);
 }
 
-.versao-footer {
+.versao-rodape {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.55);
 }
