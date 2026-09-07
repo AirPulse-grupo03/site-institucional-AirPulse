@@ -282,7 +282,11 @@ function cadastrarEmpresa() {
   avancar.disabled = true;
   avancar.textContent = "Cadastrando...";
 
-  fetch("/empresas/cadastrar", {
+  const baseUrl = (window.location.protocol === "file:" || (window.location.port && window.location.port !== "3333"))
+    ? "http://localhost:3333"
+    : "";
+
+  fetch(`${baseUrl}/empresas/cadastrar`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -312,7 +316,7 @@ function cadastrarEmpresa() {
   })
   .catch(function (erro) {
     console.error("Erro na requisição:", erro);
-    alert("Erro de conexão com o servidor. Verifique se o servidor está rodando.");
+    alert("Erro de conexão com o servidor. Verifique se o servidor backend está rodando no terminal (npm start ou node app.js em http://localhost:3333).");
     avancar.disabled = false;
     avancar.textContent = "Finalizar cadastro";
   });
