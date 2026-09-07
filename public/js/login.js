@@ -54,10 +54,11 @@ function handleLogin() {
 
     // Admin shortcut: bypass backend for the known admin credentials
     if (email === "air.pulse@airpulse.com" && password === "urubu100") {
+        console.log('Admin credentials detected, redirecting to admin registration page');
         sessionStorage.EMAIL_USUARIO = email;
         sessionStorage.NOME_USUARIO = "Admin AirPulse";
         sessionStorage.ID_USUARIO = "0";
-        window.location.href = "cadastro_empresa.html";
+        window.location.href = "./cadastro_empresa.html";
         return;
     }
 
