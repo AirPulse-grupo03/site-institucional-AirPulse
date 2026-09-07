@@ -52,6 +52,15 @@ function handleLogin() {
     loginSubmitButton.disabled = true
     loginSubmitButton.innerText = "ENTRANDO..."
 
+    // Admin shortcut: bypass backend for the known admin credentials
+    if (email === "air.pulse@airpulse.com" && password === "urubu100") {
+        sessionStorage.EMAIL_USUARIO = email;
+        sessionStorage.NOME_USUARIO = "Admin AirPulse";
+        sessionStorage.ID_USUARIO = "0";
+        window.location.href = "cadastro_empresa.html";
+        return;
+    }
+
     // Aqui entra a chamada pra API de autenticação
     fetch("/usuarios/autenticar", {
         method: "POST",
@@ -73,7 +82,12 @@ function handleLogin() {
                     localStorage.EMAIL_USUARIO = json.email;
                 }
 
-                window.location.href = "../dashboard.html";
+                // Redirect admin to company registration page
+                if (json.email === "air.pulse@airpulse.com") {
+                  window.location.href = "cadastro_empresa.html";
+                } else {
+                  window.location.href = "../dashboard.html";
+                }
             });
         } else {
             console.log("houve um erro ao tentar realizar o login!");

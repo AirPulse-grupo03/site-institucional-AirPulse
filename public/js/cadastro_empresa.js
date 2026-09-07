@@ -1,4 +1,11 @@
 const formulario = document.querySelector("#company-form");
+
+// Access control: ensure only the AirPulse admin can view this page
+const requiredEmail = "air.pulse@airpulse.com";
+if (sessionStorage.EMAIL_USUARIO !== requiredEmail) {
+  // Redirect to login if not authorized
+  window.location.href = "login.html";
+}
 const etapas = document.querySelectorAll(".step");
 const progresso = document.querySelectorAll("[data-progress]");
 const voltar = document.querySelector("#back-button");
