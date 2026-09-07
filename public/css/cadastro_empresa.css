@@ -25,17 +25,17 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   margin: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 body {
+  width: 100%;
   min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
   color: var(--cor-texto);
   background: var(--fundo-pagina);
   font-family:
@@ -68,39 +68,41 @@ a {
   background: var(--fundo-pagina);
 }
 
-/* Menu Lateral Exclusivo Admin AirPulse */
+/* Sidebar Fixa à Esquerda (Estilo Dashboard Profissional) */
 .sidebar {
-  width: 260px;
-  min-width: 260px;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
   background: linear-gradient(180deg, #1A237E 0%, #0D1240 100%);
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px 16px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  padding: 18px 14px;
   box-shadow: 4px 0 24px rgba(13, 18, 64, 0.15);
   z-index: 100;
-  transition: transform 0.3s ease;
+  overflow-x: hidden;
 }
 
 .sidebar-header {
-  padding-bottom: 18px;
+  padding-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
 .sidebar-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
 }
 
 .sidebar-brand .brand-logo {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
 }
 
@@ -111,67 +113,76 @@ a {
 
 .brand-name {
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.02em;
 }
 
 .brand-badge {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 750;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: var(--text-on-dark-secondary);
   background: rgba(79, 70, 229, 0.35);
-  padding: 2px 8px;
-  border-radius: 10px;
+  padding: 2px 7px;
+  border-radius: 8px;
   display: inline-block;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-top: 16px;
+  gap: 3px;
+  margin-top: 12px;
   flex: 1;
   overflow-y: auto;
+  padding-right: 2px;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 .nav-section-label {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   color: rgba(255, 255, 255, 0.45);
-  margin: 16px 10px 6px;
+  margin: 12px 8px 4px;
   text-transform: uppercase;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 11px 14px;
+  gap: 10px;
+  padding: 9px 12px;
   color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
-  border-radius: 12px;
-  font-size: 13.5px;
+  border-radius: 10px;
+  font-size: 13px;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.18s ease;
 }
 
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
-  transform: translateX(3px);
+  transform: translateX(2px);
 }
 
 .nav-item.active {
   background: var(--cor-primaria);
   color: #FFFFFF;
   font-weight: 750;
-  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
 }
 
 .nav-icon {
@@ -179,29 +190,30 @@ a {
 }
 
 .sidebar-footer {
-  padding-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .user-profile {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
+  gap: 10px;
+  padding: 8px 10px;
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .user-avatar {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--cor-primaria);
   color: #FFFFFF;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   display: grid;
   place-items: center;
@@ -215,7 +227,7 @@ a {
 }
 
 .user-name {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #FFFFFF;
   white-space: nowrap;
@@ -224,7 +236,7 @@ a {
 }
 
 .user-role {
-  font-size: 11px;
+  font-size: 10.5px;
   color: rgba(255, 255, 255, 0.55);
 }
 
@@ -232,15 +244,15 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
-  padding: 11px;
+  padding: 9px;
   border: 1px solid rgba(255, 99, 132, 0.35);
-  border-radius: 12px;
+  border-radius: 10px;
   background: rgba(229, 62, 62, 0.12);
   color: #FF8A8A;
   cursor: pointer;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 750;
   transition: all 0.2s ease;
 }
@@ -252,12 +264,14 @@ a {
   transform: translateY(-1px);
 }
 
-/* Área Principal de Conteúdo */
+/* Área Principal de Conteúdo (Deslocada à direita da Sidebar Fixa) */
 .main-wrapper {
-  flex: 1;
+  margin-left: 250px;
+  width: calc(100% - 250px);
   min-width: 0;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Topbar Ajustada */
@@ -269,6 +283,9 @@ a {
   padding: 0 32px;
   background: var(--fundo-superficie);
   border-bottom: 1px solid var(--border-soft);
+  position: sticky;
+  top: 0;
+  z-index: 90;
 }
 
 .topbar-left {
@@ -759,13 +776,18 @@ select.invalid {
   .sidebar {
     position: fixed;
     top: 0;
-    left: -270px;
+    left: -250px;
     height: 100vh;
     box-shadow: 8px 0 32px rgba(0, 0, 0, 0.35);
   }
 
   .sidebar.open {
-    transform: translateX(270px);
+    transform: translateX(250px);
+  }
+
+  .main-wrapper {
+    margin-left: 0;
+    width: 100%;
   }
 
   .mobile-toggle {
