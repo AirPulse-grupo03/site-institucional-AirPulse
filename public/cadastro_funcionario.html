@@ -127,7 +127,7 @@
           cpfVar == "" ||
           senhaVar == "" ||
           telefoneVar == "" ||
-          idEmpresaVar == "" ||
+         // idEmpresaVar == "" ||
           cargoVar == ""
         ) {
           cardErro.style.display = "block";
@@ -137,9 +137,7 @@
           finalizarAguardar();
           return false;
         } 
-        else {
-          setInterval(sumirMensagem, 5000);
-        }
+        
 
         fetch("/cadastro_funcionario/cadastrar", {
             method: "POST",
@@ -173,7 +171,7 @@
                     // limparFormulario();
                     // finalizarAguardar();
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    mensagem_erro.innerHTML = "Houve um erro ao tentar realizar o cadastro!";
                 }
             })
             .catch(function (resposta) {
