@@ -110,27 +110,6 @@
 
         //var idEmpresa = sessionStorage.getItem("empresa")
 
-        document.querySelector('[type=date]').value = (data_nascimento.value).split('/').reverse().join('-');
-        
-        function limparCpf(cpf){
-            return cpf.replace(/\D/g, "");
-        }
-        
-        function validarCpf(cpf){
-            const cpfLimpo = limparCpf(cpf);
-        
-            return cpfLimpo.length === 1;
-        }
-        
-        function limparTelefone(telefone){
-            return telefone.replace(/\D/g, "");
-        }
-        
-        function validarTelefone(telefone){
-            const telefoneLimpo = limparTelefone(cpf);
-        
-            return telefoneLimpo.length === 1;
-        }
         
         var nomeVar = nome.value;
         var emailVar = email.value;
