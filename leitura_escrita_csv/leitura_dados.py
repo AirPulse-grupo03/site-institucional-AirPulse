@@ -167,8 +167,8 @@ def mostrar_logo():
    ██║  ██║██║██║  ██║██║     ╚██████╔╝███████╗███████║███████╗
    ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
 
-                 MONITORAMENTO DE RECURSOS
-             CPU • MEMÓRIA RAM • ARMAZENAMENTO
+                    MONITORAMENTO DE RECURSOS
+                CPU • MEMÓRIA RAM • ARMAZENAMENTO
     ==============================================================
 """)
 
