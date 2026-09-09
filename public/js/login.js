@@ -1,7 +1,6 @@
 const loginForm = document.getElementById("loginForm")
 const emailInput = document.getElementById("emailInput")
 const passwordInput = document.getElementById("passwordInput")
-const keepConnectedCheckbox = document.getElementById("keepConnectedCheckbox")
 const loginSubmitButton = document.getElementById("loginSubmitButton")
 
 // Limpa erros ao digitar
@@ -79,15 +78,11 @@ function handleLogin() {
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
 
-                if (keepConnectedCheckbox.checked) {
-                    localStorage.EMAIL_USUARIO = json.email;
-                }
-
                 // Redirect admin to company registration page
                 if (json.email === "air.pulse@airpulse.com") {
                   window.location.href = "cadastro_empresa.html";
                 } else {
-                  window.location.href = "../dashboard.html";
+                  window.location.href = "home.html";
                 }
             });
         } else {
