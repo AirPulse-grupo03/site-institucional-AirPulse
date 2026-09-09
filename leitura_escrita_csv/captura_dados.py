@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 
 CONFIG = {
-    "username": "FMC-AB2",
+    "username": "FMC-DE2",
     "write_interval": 10,
     "csv_lines": 50
 }

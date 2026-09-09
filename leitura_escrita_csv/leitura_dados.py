@@ -1,7 +1,7 @@
 # Lê arquivos CSV usando os nomes das colunas.
 import csv
 
-# Procura arquivos que seguem um padrão de nome.
+# Trabalha com pastas e caminhos de arquivos.
 import glob
 
 # Converte e formata datas e horários.
@@ -176,49 +176,75 @@ def disco_use(disco, disco_total):
         )
 
 
-# Mostra a logo e o título do programa no terminal.
-def mostrar_logo():
-
-    # As três aspas permitem escrever um texto com várias linhas.
-    # O r mantém barras invertidas como texto literal.
-    print(r"""
-    █████╗ ██╗██████╗ ██████╗ ██╗   ██╗██╗     ███████╗███████╗
-   ██╔══██╗██║██╔══██╗██╔══██╗██║   ██║██║     ██╔════╝██╔════╝
-   ███████║██║██████╔╝██████╔╝██║   ██║██║     ███████╗█████╗
-   ██╔══██║██║██╔══██╗██╔═══╝ ██║   ██║██║     ╚════██║██╔══╝
-   ██║  ██║██║██║  ██║██║     ╚██████╔╝███████╗███████║███████╗
-   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
-
-                    MONITORAMENTO DE RECURSOS
-                CPU • MEMÓRIA RAM • ARMAZENAMENTO
-    ==============================================================
-""")
+# Mostra um título dentro de uma caixa, como no visual original.
+def mostrar_titulo(titulo):
+    print("\n    +" + "-" * 60 + "+")
+    # center coloca o título no meio dos 60 espaços da caixa.
+    print("    |" + titulo.center(60) + "|")
+    print("    +" + "-" * 60 + "+")
 
 
-# Mostra a logo e as opções disponíveis.
+# Mostra o cabeçalho e o menu com as bordas do código anterior.
 def mostrar_menu():
-
-    mostrar_logo()
-
+    # As três aspas permitem escrever o quadro em várias linhas.
     print("""
+    
+        █████╗ ██╗██████╗ ██████╗ ██╗   ██╗██╗     ███████╗███████╗
+       ██╔══██╗██║██╔══██╗██╔══██╗██║   ██║██║     ██╔════╝██╔════╝
+       ███████║██║██████╔╝██████╔╝██║   ██║██║     ███████╗█████╗
+       ██╔══██║██║██╔══██╗██╔═══╝ ██║   ██║██║     ╚════██║██╔══╝
+       ██║  ██║██║██║  ██║██║     ╚██████╔╝███████╗███████║███████╗
+       ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
+
+
+                        MONITORAMENTO DE RECURSOS
+                    CPU • MEMÓRIA RAM • ARMAZENAMENTO
+    ==============================================================
+
+    
     +------------------------------------------------------------+
-    |                         MENU                               |
+    |                            MENU                            |
     +------------------------------------------------------------+
     |                                                            |
-    |                    [1] MONITORAR                           |
-    |                    [2] SAIR                                |
+    |                 [1] ANALISAR TODOS OS CSVs                 |
+    |               [2] LISTAR CSVs E ESCOLHER UM                |
+    |                          [0] SAIR                          |
     |                                                            |
     +------------------------------------------------------------+
 """)
 
+
+# Lista os arquivos e devolve somente o escolhido.
+def escolher_arquivo(arquivos):
+    mostrar_titulo("ARQUIVOS DISPONÍVEIS")
+
+    # Este for está dentro da função: quatro espaços antes dele.
+    for numero, nome_arquivo in enumerate(arquivos, start=1):
+        print(f"        [{numero}] {nome_arquivo}")
+
+    print("\n        [0] Voltar")
+    print("    +" + "-" * 60 + "+")
+
+    while True:
+        opcao = input("\nEscolha o arquivo: ").strip()
+
+        if opcao == "0":
+            return []
+
+        for numero, nome_arquivo in enumerate(arquivos, start=1):
+            if opcao == str(numero):
+                return [nome_arquivo]
+
+        mostrar_titulo(
+        """
+            
+            OPÇÃO INVÁLIDA
+        
+        """)
+        print("    Digite um número da lista.")
 
 # Lê os dados salvos nos CSVs e calcula o resumo geral.
-def processar_dados():
-
-    # Procura arquivos que começam com dados_ e terminam com .csv.
-    # ./ representa a pasta de trabalho atual da execução,
-    # que não é necessariamente a pasta onde está o código.
-    arquivos = glob.glob("./dados_*.csv")
+def processar_dados(arquivos):
 
     # Acumulam os percentuais de todos os registros lidos.
     soma_cpu = 0
@@ -228,30 +254,16 @@ def processar_dados():
     # Conta quantos registros foram processados para calcular as médias.
     quantidade_registros = 0
 
-    # len retorna a quantidade de arquivos encontrados.
-    if len(arquivos) == 0:
-
-        print("""
-    +------------------------------------------------------------+
-    |                         AVISO                              |
-    +------------------------------------------------------------+
-    |                                                            |
-    |          Nenhum arquivo dados_*.csv encontrado.            |
-    |                                                            |
-    +------------------------------------------------------------+
-""")
-
-        # Encerra esta função quando não há arquivos para ler.
-        return
-
     print("""
     +------------------------------------------------------------+
-    |                INICIANDO MONITORAMENTO                     |
+    |                  INICIANDO MONITORAMENTO                   |
     +------------------------------------------------------------+
 """)
 
     # Percorre cada arquivo encontrado.
     for nome_arquivo in arquivos:
+
+        print(f"\n    Arquivo: {nome_arquivo}")
 
         # Abre o arquivo para leitura.
         # UTF-8 é a codificação usada para interpretar o texto.
@@ -259,7 +271,8 @@ def processar_dados():
         with open(
             nome_arquivo,
             mode="r",
-            encoding="utf-8"
+            encoding="utf-8",
+            newline=""
         ) as arquivo:
 
             # Usa a primeira linha como cabeçalho.
@@ -300,7 +313,7 @@ def processar_dados():
                 # \n pula uma linha.
                 # strftime formata a data para dia/mês/ano hora:minuto:segundo.
                 print(
-                    "\n \n \n "
+                    "\n"
                     "==============================================================\n"
                     f"Usuário: {username}\n"
                     f"Horário: {timestamp.strftime('%d/%m/%Y %H:%M:%S')}\n"
@@ -324,7 +337,7 @@ def processar_dados():
     # Só calcula as médias se houver registros, evitando divisão por zero.
     if quantidade_registros > 0:
 
-        # Calcula a média dos percentuais de todos os arquivos juntos.
+        # Calcula a média dos percentuais dos arquivos selecionados.
         # Cada registro tem o mesmo peso no cálculo.
         media_cpu = soma_cpu / quantidade_registros
         media_ram = soma_ram / quantidade_registros
@@ -334,7 +347,7 @@ def processar_dados():
         print(
             "\n\n"
             "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
-            "+                   RESUMO GERAL DOS FMC                     +\n"
+            "+                 RESUMO DOS CSVs ANALISADOS                  +\n"
             "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
             f"\nRegistros analisados: {quantidade_registros}\n"
             "\n"
@@ -351,57 +364,76 @@ def processar_dados():
         )
 
 
-# Controla o menu e a escolha do usuário.
-def iniciar():
-
-    # Repete o menu até que o break seja executado.
-    while True:
-
-        mostrar_menu()
-
-        # input espera o usuário digitar e pressionar ENTER.
-        # O valor recebido é um texto, por isso as comparações usam aspas.
-        opcao = input("Escolha uma opção: ")
-
-        if opcao == "1":
-
-            print("\nOpção selecionada: Monitorar\n")
-
-            # Lê e analisa os arquivos CSV.
-            processar_dados()
-
-            # Aguarda ENTER antes de mostrar o menu novamente.
-            input(
-                "\nPressione ENTER para voltar ao menu..."
-            )
-
-        elif opcao == "2":
-
-            print("""
+    else:
+        print("""
+    +------------------------------------------------------------+
+    |                           AVISO                            |
     +------------------------------------------------------------+
     |                                                            |
-    |                  AIRPULSE ENCERRADO                        |
+    | Os arquivos selecionados não têm registros para analisar.  |
     |                                                            |
     +------------------------------------------------------------+
 """)
 
-            # Sai do while e encerra a função.
+
+# Controla o menu e busca os CSVs a cada nova análise.
+def iniciar():
+    while True:
+        mostrar_menu()
+        # \n pula uma linha; input recebe texto; strip remove espaços das pontas.
+        opcao = input("\nEscolha uma opção: ").strip()
+
+        if opcao == "0":
+            print("""
+    +------------------------------------------------------------+
+    |                                                            |
+    |                     AIRPULSE ENCERRADO                     |                  
+    |                                                            |
+    +------------------------------------------------------------+
+""")
             break
 
-        else:
-
-            # Avisa quando o usuário digita algo diferente de 1 ou 2.
+        if opcao != "1" and opcao != "2":
             print("""
     +------------------------------------------------------------+
-    |                     OPÇÃO INVÁLIDA                         |
+    |                       OPÇÃO INVÁLIDA                       |
     +------------------------------------------------------------+
     |                                                            |
-    |                Digite 1 para Monitorar                     |
-    |                Digite 2 para Sair                          |
+    |            Digite 1 para analisar todos os CSVs            |
+    |           Digite 2 para listar e escolher um CSV           |
+    |                     Digite 0 para sair                     |
     |                                                            |
     +------------------------------------------------------------+
 """)
+            continue
 
+        # Os arquivos precisam começar com dados_ e terminar com .csv.
+        arquivos = sorted(glob.glob("./dados_*.csv"))
 
-# Chama a função que inicia o programa.
+        if len(arquivos) == 0:
+            print("""
+    +------------------------------------------------------------+
+    |                           AVISO                            |
+    +------------------------------------------------------------+
+    |                                                            |
+    |           Nenhum arquivo dados_*.csv encontrado.           |
+    |                                                            |
+    +------------------------------------------------------------+
+""")
+            input("Pressione ENTER para voltar ao menu...")
+            continue
+
+        # Na opção 1, a lista mantém todos os arquivos encontrados.
+        # Na opção 2, passa a conter somente o arquivo escolhido.
+        if opcao == "2":
+            arquivos = escolher_arquivo(arquivos)
+
+            # Uma lista vazia indica que o usuário escolheu voltar.
+            if len(arquivos) == 0:
+                continue
+
+        processar_dados(arquivos)
+        input("\nPressione ENTER para voltar ao menu...")
+
+#inicia tudo
 iniciar()
