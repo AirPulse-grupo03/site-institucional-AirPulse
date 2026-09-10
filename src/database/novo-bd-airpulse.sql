@@ -38,8 +38,8 @@ CREATE TABLE funcionario (
     cargo VARCHAR(50),
     adm TINYINT NOT NULL, -- ADM ou comum
     senha VARCHAR(200) NOT NULL,
-    status_sistema TINYINT NOT NULL,
-    entrada_sistema DATETIME NOT NULL,
+    status_sistema TINYINT NOT NULL DEFAULT 1,
+    entrada_sistema DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fk_empresa_fabricante INT,
     FOREIGN KEY (fk_empresa_fabricante) REFERENCES empresa_fabricante(id_empresa_fabricante)
 );
