@@ -4,12 +4,13 @@ import time
 from datetime import datetime
 
 CONFIG = {
-    "username": "FMC-DE2",
-    "write_interval": 10,
-    "csv_lines": 50
+    "username": "FMC-I5A3Y",
+    "write_interval": 1,
+    "csv_lines": 10
 }
 
 def capturar_dados():
+    print("Iniciando a Captura dos Dados: ")
     linhas_csv = CONFIG["csv_lines"]
 
     with open(f'./dados_{CONFIG["username"]}.csv', 'w', newline='') as csvfile:
@@ -36,5 +37,7 @@ def capturar_dados():
 
             print(f"Usuário: {CONFIG["username"]} | Timestamp: {now_formated} | Uso de CPU: {cpu_percent}% | Uso de Memória RAM: {mem_percent}% | Uso de Disco: {disk_percent}%")
             linhas_csv -= 1
+
+    print("Encerrando a Captura dos Dados.")
 
 capturar_dados()
