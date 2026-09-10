@@ -569,6 +569,11 @@
 @media (max-width: 450px){
 #bannerIndex{
      background-image:none;
+     height: auto;
+     min-height: 60vh;
+     justify-content: center;
+     gap: 28px;
+     padding: 40px 0;
 }
 
 #slogan{
@@ -628,6 +633,43 @@
 .linha-rotulo {
     display: none;
 }
+
+.posicao-grade-beneficios {
+    padding: 30px 24px;
+}
+
+.item-contato {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.botao-cta-primario {
+    width: 100%;
+}
+}
+
+
+@media (max-width: 900px) {
+    .secao-nosso-servico,
+    .secao-como-funciona,
+    .secao-sobre-nos,
+    .secao-historia,
+    .secao-diferenciais {
+        padding: 56px 40px;
+    }
+
+    .cabecalhos-principais {
+        margin-bottom: 40px;
+    }
+
+    .titulos-principais {
+        font-size: 28px;
+    }
+
+    .conteudo-historia {
+        flex-direction: column;
+    }
 }
 
 

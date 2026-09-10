@@ -344,16 +344,5 @@ if (sessionStorage.NOME_USUARIO) {
   }
 }
 
-/* Toggle do menu lateral em telas menores 
-serve para controlar o botão que abre e fecha o sidebar em telas menores*/
-const mobileToggle = document.getElementById("mobileToggle");
-const sidebar = document.getElementById("sidebar");
-
-if (mobileToggle && sidebar) {
-  mobileToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("open");
-  });
-}
-
 /* Inicia o formulário na primeira etapa */
 mostrarEtapa(1);

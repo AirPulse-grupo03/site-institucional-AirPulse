@@ -1,9 +1,8 @@
 function abrirMenuLaterar() {
-   
-  const navbar = document.getElementById('navbar');
 
-  navbar.classList.toggle('menu-aberto');
+  const header = document.getElementById('siteHeader');
+
+  header.classList.toggle('menu-aberto');
 
 }
-
 

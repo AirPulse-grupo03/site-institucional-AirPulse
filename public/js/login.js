@@ -77,6 +77,11 @@ function handleLogin() {
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
+                // Flag que diferencia o gestor da empresa (pode cadastrar
+                // funcionários) de um funcionário comum. Time de backend:
+                // preencher `admin` (true/false) na resposta de /usuarios/autenticar —
+                // true só pra conta criada automaticamente quando a empresa é cadastrada.
+                sessionStorage.ADM_USUARIO = json.admin ? "true" : "false";
 
                 // Redirect admin to company registration page
                 if (json.email === "air.pulse@airpulse.com") {
