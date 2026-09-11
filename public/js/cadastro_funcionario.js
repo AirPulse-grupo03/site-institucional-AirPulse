@@ -20,6 +20,7 @@ function cadastrar() {
     var telefoneVar = limparTelefone(telefone.value);
     var cargoVar = cargo.value;
     var senhaVar = senha.value;
+    var idFuncionarioAdmVar = sessionStorage.ID_USUARIO;
 
     if (
         nomeVar == "" ||
@@ -28,7 +29,8 @@ function cadastrar() {
         cpfVar == "" ||
         senhaVar == "" ||
         telefoneVar == "" ||
-        cargoVar == ""
+        cargoVar == "" ||
+        idFuncionarioAdmVar == ""
     ) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
@@ -47,7 +49,8 @@ function cadastrar() {
             cpfServer: cpfVar,
             senhaServer: senhaVar,
             telefoneServer: telefoneVar,
-            cargoServer: cargoVar
+            cargoServer: cargoVar,
+            idFuncionarioAdmServer: idFuncionarioAdmVar
         }),
     })
         .then(function (resposta) {
